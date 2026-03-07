@@ -1,0 +1,30 @@
+{
+  "name": "glow",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Generative Layer Over Web — real-time personalization overlay for any website",
+  "workspaces": [
+    "core",
+    "indexer",
+    "extension",
+    "worker",
+    "snippet"
+  ],
+  "scripts": {
+    "build": "tsc -b",
+    "build:core": "tsc -p core/tsconfig.json",
+    "build:worker": "cd worker && npx wrangler deploy --dry-run",
+    "build:extension": "cd extension && npx vite build",
+    "build:snippet": "cd snippet && npx vite build",
+    "test": "vitest",
+    "test:run": "vitest run",
+    "test:coverage": "vitest run --coverage",
+    "lint": "tsc --noEmit",
+    "clean": "rm -rf dist core/dist indexer/dist extension/dist worker/dist snippet/dist"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "typescript": "^5.7.0",
+    "vitest": "^3.0.0"
+  }
+}

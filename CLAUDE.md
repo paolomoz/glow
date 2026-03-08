@@ -1,5 +1,8 @@
 # Glow — Generative Layer Over Web
 
+## Implementation Plan
+See [PLAN.md](./PLAN.md) for the full implementation plan with phases, task IDs, and dependency graph.
+
 ## Project Overview
 Real-time generative personalization overlay for any website. Sub-2.5s click-to-LCP.
 Cerebras inference (GPT-OSS-120B, GLM-4.7, GLM-4.7-Flash). Cloudflare edge deployment.

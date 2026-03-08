@@ -23,3 +23,32 @@ export {
   type BlockCapture,
   type VisualCaptureOptions,
 } from './extractor/index.js';
+export {
+  chunkAtoms,
+  estimateTokens,
+  type ContentChunk,
+  type ChunkerOptions,
+} from './chunker.js';
+export {
+  generateEmbeddings,
+  applyEmbeddingsToAtoms,
+  type EmbedderConfig,
+  type EmbeddingResult,
+} from './embedder.js';
+export {
+  buildBrandProfile,
+  buildFallbackProfile,
+  type ProfilerConfig,
+} from './profiler.js';
+export {
+  buildContentIndex,
+  type IndexBuilderConfig,
+  type IndexingStage,
+} from './index-builder.js';
+export {
+  writeContentIndex,
+  buildIndexMetadata,
+  InMemoryIndexWriter,
+  type IndexStorageWriter,
+  type IndexMetadata,
+} from './storage-writers.js';

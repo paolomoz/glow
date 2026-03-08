@@ -1,0 +1,11 @@
+User-agent: *
+Disallow: /admin/
+Disallow: /private/
+Crawl-delay: 2
+
+User-agent: glow-crawler
+Disallow: /internal/
+Crawl-delay: 1
+
+Sitemap: https://example.com/sitemap.xml
+Sitemap: https://example.com/sitemap-blog.xml

@@ -38,3 +38,16 @@ export function getMaxBlocksForLevel(level: PersonalizationLevel): number {
       return 5;
   }
 }
+
+/**
+ * Default implementation of progressive personalization.
+ */
+export class DefaultProgressivePersonalization implements ProgressivePersonalization {
+  getLevel(confidence: number): PersonalizationLevel {
+    return getPersonalizationLevel(confidence);
+  }
+
+  getMaxBlocks(level: PersonalizationLevel): number {
+    return getMaxBlocksForLevel(level);
+  }
+}

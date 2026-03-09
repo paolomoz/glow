@@ -49,3 +49,15 @@ export type { SiteClassifier, ClassificationResult } from './skills/classifier.j
 export { classifySiteType } from './skills/classifier.js';
 export type { SkillLoader } from './skills/loader.js';
 export { getSkillConfigName, getAvailableSkillNames, loadDefaultSkillConfig, DEFAULT_SKILL_CONFIGS } from './skills/loader.js';
+export { validateSkillConfig } from './skills/validator.js';
+export type { ValidationResult } from './skills/validator.js';
+export type { ExternalSkillLoader } from './skills/hot-loader.js';
+export { SkillHotLoader, KVSkillLoader } from './skills/hot-loader.js';
+
+// Analytics
+export type { EngagementTracker } from './analytics/tracker.js';
+export { DefaultEngagementTracker } from './analytics/tracker.js';
+export type { AtomScorer, AggregatedMetrics, RankedAtom as RankedPerformanceAtom } from './analytics/scorer.js';
+export { DefaultAtomScorer } from './analytics/scorer.js';
+export type { GapAnalyzer, ContentGap, TemplateGap, AudienceGap } from './analytics/gaps.js';
+export { DefaultGapAnalyzer } from './analytics/gaps.js';

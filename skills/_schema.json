@@ -1,0 +1,196 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://glow.dev/schemas/skill-config.json",
+  "title": "Glow Skill Configuration",
+  "description": "Website-type configuration for signal interpretation, intent mapping, generation constraints, and guardrails.",
+  "type": "object",
+  "required": ["siteType", "signalWeights", "intentOverrides", "generationConstraints", "promptModifiers"],
+  "additionalProperties": false,
+  "properties": {
+    "siteType": {
+      "type": "string",
+      "description": "The website vertical this skill applies to.",
+      "enum": ["pharma", "ecommerce", "saas", "media", "corporate", "other"]
+    },
+    "signalWeights": {
+      "type": "object",
+      "description": "Weight multipliers for each signal type. Higher weight = more influence on intent.",
+      "additionalProperties": false,
+      "properties": {
+        "page_visit": { "type": "number", "minimum": 0, "maximum": 5 },
+        "scroll_depth": { "type": "number", "minimum": 0, "maximum": 5 },
+        "click_target": { "type": "number", "minimum": 0, "maximum": 5 },
+        "hover_dwell": { "type": "number", "minimum": 0, "maximum": 5 },
+        "search_query": { "type": "number", "minimum": 0, "maximum": 5 },
+        "filter_select": { "type": "number", "minimum": 0, "maximum": 5 },
+        "navigation": { "type": "number", "minimum": 0, "maximum": 5 },
+        "time_on_section": { "type": "number", "minimum": 0, "maximum": 5 },
+        "form_interaction": { "type": "number", "minimum": 0, "maximum": 5 },
+        "viewport_block_visibility": { "type": "number", "minimum": 0, "maximum": 5 }
+      }
+    },
+    "intentOverrides": {
+      "type": "object",
+      "description": "Custom rules for intent archetype detection and confidence adjustments.",
+      "required": ["archetypeIndicators", "confidenceBoosts"],
+      "additionalProperties": false,
+      "properties": {
+        "archetypeIndicators": {
+          "type": "object",
+          "description": "Keyword lists that indicate specific intent archetypes.",
+          "additionalProperties": false,
+          "properties": {
+            "explore": { "$ref": "#/$defs/keywordList" },
+            "compare": { "$ref": "#/$defs/keywordList" },
+            "dive_deep": { "$ref": "#/$defs/keywordList" },
+            "seek_action": { "$ref": "#/$defs/keywordList" },
+            "return": { "$ref": "#/$defs/keywordList" }
+          }
+        },
+        "confidenceBoosts": {
+          "type": "object",
+          "description": "Named confidence boost values applied when specific conditions are met.",
+          "additionalProperties": { "type": "number", "minimum": -1, "maximum": 1 }
+        }
+      }
+    },
+    "generationConstraints": {
+      "type": "object",
+      "description": "Limits and rules for content generation.",
+      "required": ["maxBlocksPerPage", "requiredDisclaimers", "forbiddenTopics", "audienceDetection"],
+      "additionalProperties": false,
+      "properties": {
+        "maxBlocksPerPage": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 10,
+          "description": "Maximum number of generative blocks per page."
+        },
+        "requiredDisclaimers": {
+          "type": "array",
+          "description": "Disclaimers that must be included when trigger conditions are met.",
+          "items": {
+            "type": "object",
+            "required": ["trigger", "text"],
+            "additionalProperties": false,
+            "properties": {
+              "trigger": {
+                "type": "string",
+                "description": "Condition that triggers this disclaimer (e.g., 'drug_mention', 'pricing')."
+              },
+              "text": {
+                "type": "string",
+                "description": "Disclaimer text to include in generated content."
+              },
+              "position": {
+                "type": "string",
+                "enum": ["before", "after", "inline"],
+                "default": "after",
+                "description": "Where to place the disclaimer relative to generated content."
+              }
+            }
+          }
+        },
+        "forbiddenTopics": {
+          "type": "array",
+          "description": "Topics that must never appear in generated content.",
+          "items": { "type": "string" }
+        },
+        "audienceDetection": {
+          "type": "array",
+          "description": "Rules for detecting and routing to specific audience segments.",
+          "items": {
+            "type": "object",
+            "required": ["signal", "audience", "action"],
+            "additionalProperties": false,
+            "properties": {
+              "signal": {
+                "type": "string",
+                "description": "Signal pattern or URL pattern that indicates this audience."
+              },
+              "audience": {
+                "type": "string",
+                "description": "Audience segment name."
+              },
+              "action": {
+                "type": "string",
+                "description": "Action to take for this audience (e.g., 'show_clinical_data')."
+              }
+            }
+          }
+        },
+        "approvalRequired": {
+          "type": "boolean",
+          "default": false,
+          "description": "If true, generated content requires manual approval before injection."
+        },
+        "maxGenerationTokens": {
+          "type": "integer",
+          "minimum": 50,
+          "maximum": 2000,
+          "description": "Maximum output tokens for generation."
+        }
+      }
+    },
+    "promptModifiers": {
+      "type": "object",
+      "description": "Modifications to generation prompts for this skill.",
+      "required": ["systemSuffix"],
+      "additionalProperties": false,
+      "properties": {
+        "systemSuffix": {
+          "type": "string",
+          "description": "Text appended to the system prompt for all generation tasks."
+        },
+        "toneOverride": {
+          "type": "string",
+          "description": "Override for the brand voice tone (e.g., 'clinical', 'conversational')."
+        },
+        "contentRules": {
+          "type": "array",
+          "description": "Additional content generation rules.",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "funnelStages": {
+      "type": "array",
+      "description": "Ordered funnel stages for tracking visitor progression.",
+      "items": {
+        "type": "object",
+        "required": ["name", "indicators"],
+        "additionalProperties": false,
+        "properties": {
+          "name": { "type": "string" },
+          "indicators": { "$ref": "#/$defs/keywordList" },
+          "contentMode": {
+            "type": "string",
+            "description": "Content generation mode for this stage."
+          }
+        }
+      }
+    },
+    "specialModes": {
+      "type": "array",
+      "description": "Special content generation modes triggered by specific conditions.",
+      "items": {
+        "type": "object",
+        "required": ["name", "trigger", "description"],
+        "additionalProperties": false,
+        "properties": {
+          "name": { "type": "string" },
+          "trigger": { "type": "string" },
+          "description": { "type": "string" },
+          "promptOverride": { "type": "string" }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "keywordList": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "List of keywords or phrases that indicate this category."
+    }
+  }
+}

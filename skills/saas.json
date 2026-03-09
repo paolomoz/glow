@@ -1,0 +1,132 @@
+{
+  "$schema": "./_schema.json",
+  "siteType": "saas",
+  "signalWeights": {
+    "page_visit": 1.0,
+    "click_target": 1.2,
+    "scroll_depth": 1.0,
+    "time_on_section": 1.3,
+    "search_query": 1.5,
+    "navigation": 1.2,
+    "form_interaction": 2.0
+  },
+  "intentOverrides": {
+    "archetypeIndicators": {
+      "explore": [
+        "features", "overview", "how it works", "use cases",
+        "solutions", "industries", "about"
+      ],
+      "compare": [
+        "pricing", "plans", "versus", "comparison", "alternatives",
+        "enterprise vs", "free vs paid", "ROI"
+      ],
+      "dive_deep": [
+        "docs", "api", "integration", "documentation", "changelog",
+        "roadmap", "security", "compliance", "architecture"
+      ],
+      "seek_action": [
+        "demo", "trial", "sign up", "get started", "contact sales",
+        "book a call", "request quote", "free trial"
+      ],
+      "return": [
+        "login", "dashboard", "account", "billing", "settings",
+        "support", "help center"
+      ]
+    },
+    "confidenceBoosts": {
+      "pricing_page_visit": 0.2,
+      "demo_form_start": 0.25,
+      "docs_deep_dive": 0.15,
+      "multi_page_session": 0.1
+    }
+  },
+  "generationConstraints": {
+    "maxBlocksPerPage": 3,
+    "requiredDisclaimers": [
+      {
+        "trigger": "pricing",
+        "text": "Pricing may vary. Contact sales for custom enterprise plans.",
+        "position": "after"
+      }
+    ],
+    "forbiddenTopics": [
+      "competitor bashing",
+      "unverified performance claims",
+      "guaranteed uptime without SLA reference"
+    ],
+    "audienceDetection": [
+      {
+        "signal": "/docs",
+        "audience": "developer",
+        "action": "show_technical_content"
+      },
+      {
+        "signal": "/pricing",
+        "audience": "buyer",
+        "action": "show_value_proposition"
+      },
+      {
+        "signal": "/enterprise",
+        "audience": "enterprise_buyer",
+        "action": "show_enterprise_features"
+      },
+      {
+        "signal": "docs_api_deep_dive",
+        "audience": "developer",
+        "action": "show_integration_guides"
+      }
+    ],
+    "maxGenerationTokens": 800
+  },
+  "promptModifiers": {
+    "systemSuffix": "Emphasize value proposition and use cases. Match the technical depth to the inferred audience. For developers: be precise and reference APIs and integrations. For buyers: focus on ROI, time savings, and team productivity. Never make performance claims without backing data from the content index.",
+    "contentRules": [
+      "Technical claims must reference specific features or documentation",
+      "Pricing content must match indexed pricing data exactly",
+      "Feature comparisons must only include indexed features",
+      "Use case examples should come from indexed case studies or testimonials"
+    ]
+  },
+  "funnelStages": [
+    {
+      "name": "awareness",
+      "indicators": ["what is", "overview", "features", "solutions"],
+      "contentMode": "educational"
+    },
+    {
+      "name": "consideration",
+      "indicators": ["pricing", "comparison", "case studies", "integrations", "security"],
+      "contentMode": "evaluation"
+    },
+    {
+      "name": "decision",
+      "indicators": ["demo", "trial", "contact sales", "implementation"],
+      "contentMode": "conversion"
+    },
+    {
+      "name": "adoption",
+      "indicators": ["docs", "api", "guides", "tutorials", "quickstart"],
+      "contentMode": "onboarding"
+    }
+  ],
+  "specialModes": [
+    {
+      "name": "convince_my_boss",
+      "trigger": "pricing_page_long_dwell",
+      "description": "Generate shareable business case summary for internal stakeholders",
+      "promptOverride": "Generate a concise executive summary suitable for sharing with a decision-maker. Include: key value propositions, ROI indicators, relevant case study snippets, and competitive positioning. Format for easy copying/forwarding."
+    },
+    {
+      "name": "developer_mode",
+      "trigger": "audience_detected:developer",
+      "description": "Technical content for developers evaluating the product",
+      "promptOverride": "Generate technically precise content. Include code examples where relevant. Reference API endpoints and SDKs. Use developer-friendly language. Avoid marketing fluff."
+    },
+    {
+      "name": "competitive_comparison",
+      "trigger": "comparison_page_visit",
+      "description": "Fair competitive comparison based on indexed content",
+      "promptOverride": "Generate a factual feature comparison. Only include verified features from the content index. Be honest about limitations. Focus on genuine differentiators."
+    }
+  ]
+}

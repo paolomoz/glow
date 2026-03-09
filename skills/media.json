@@ -1,0 +1,125 @@
+{
+  "$schema": "./_schema.json",
+  "siteType": "media",
+  "signalWeights": {
+    "scroll_depth": 1.5,
+    "time_on_section": 1.5,
+    "click_target": 1.0,
+    "page_visit": 0.8,
+    "search_query": 1.3,
+    "navigation": 1.0,
+    "viewport_block_visibility": 1.5
+  },
+  "intentOverrides": {
+    "archetypeIndicators": {
+      "explore": [
+        "homepage", "trending", "latest", "top stories",
+        "breaking", "popular", "most read", "editors picks"
+      ],
+      "compare": [
+        "opinion", "analysis", "versus", "debate",
+        "roundup", "best of", "rankings"
+      ],
+      "dive_deep": [
+        "longread", "investigation", "deep dive", "explainer",
+        "feature", "series", "part", "chapter", "in-depth"
+      ],
+      "return": [
+        "newsletter", "subscribe", "bookmark", "saved",
+        "reading list", "follow", "topics"
+      ]
+    },
+    "confidenceBoosts": {
+      "article_completion": 0.2,
+      "topic_revisit": 0.15,
+      "search_within_topic": 0.2,
+      "multi_article_session": 0.1
+    }
+  },
+  "generationConstraints": {
+    "maxBlocksPerPage": 2,
+    "requiredDisclaimers": [
+      {
+        "trigger": "sponsored_content",
+        "text": "This content is personalized based on your reading interests.",
+        "position": "before"
+      }
+    ],
+    "forbiddenTopics": [
+      "fabricated quotes",
+      "invented statistics",
+      "false attributions",
+      "clickbait headlines not reflecting content"
+    ],
+    "audienceDetection": [
+      {
+        "signal": "deep_reader",
+        "audience": "engaged_reader",
+        "action": "show_related_longform"
+      },
+      {
+        "signal": "headline_scanner",
+        "audience": "casual_reader",
+        "action": "show_digest_format"
+      },
+      {
+        "signal": "topic_specialist",
+        "audience": "topic_follower",
+        "action": "show_topic_deep_dive"
+      }
+    ],
+    "maxGenerationTokens": 600
+  },
+  "promptModifiers": {
+    "systemSuffix": "Content must be factual and grounded in indexed articles. Do not generate opinions or editorials. Headlines must accurately reflect the content they introduce. Never fabricate quotes, statistics, or source attributions. Related content suggestions must link to real indexed articles.",
+    "contentRules": [
+      "Headlines must be accurate, not sensationalized",
+      "All factual claims must come from indexed content",
+      "Never fabricate quotes or attributions",
+      "Reading time estimates should be accurate",
+      "Related article suggestions must reference real indexed articles"
+    ]
+  },
+  "funnelStages": [
+    {
+      "name": "scanning",
+      "indicators": ["homepage", "category", "trending", "headlines"],
+      "contentMode": "digest"
+    },
+    {
+      "name": "reading",
+      "indicators": ["article", "story", "feature", "report"],
+      "contentMode": "contextual"
+    },
+    {
+      "name": "exploring",
+      "indicators": ["related", "topic", "author", "series"],
+      "contentMode": "discovery"
+    },
+    {
+      "name": "returning",
+      "indicators": ["newsletter", "saved", "bookmarks", "history"],
+      "contentMode": "personalized_digest"
+    }
+  ],
+  "specialModes": [
+    {
+      "name": "digest_mode",
+      "trigger": "returning_visitor",
+      "description": "Newsletter-style digest of new content since last visit",
+      "promptOverride": "Generate a personalized content digest based on the reader's topic interests. Include 3-5 article summaries with key takeaways. Format as a scannable newsletter-style block. Only reference real indexed articles."
+    },
+    {
+      "name": "topic_deep_dive",
+      "trigger": "same_topic_3plus_articles",
+      "description": "Curated deep dive for readers showing topic affinity",
+      "promptOverride": "Generate a topic overview connecting multiple related articles. Highlight key themes, different perspectives, and suggest a reading order for comprehensive understanding. Reference only indexed content."
+    },
+    {
+      "name": "reading_continuation",
+      "trigger": "article_completion",
+      "description": "Smart next-read suggestions based on reading patterns",
+      "promptOverride": "Suggest the next article to read based on the reader's interests and reading depth. Include a brief teaser that connects to what they just read. Only reference indexed articles."
+    }
+  ]
+}

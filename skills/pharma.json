@@ -1,0 +1,138 @@
+{
+  "$schema": "./_schema.json",
+  "siteType": "pharma",
+  "signalWeights": {
+    "click_target": 1.5,
+    "time_on_section": 1.5,
+    "scroll_depth": 1.0,
+    "search_query": 2.0,
+    "page_visit": 1.2,
+    "navigation": 1.3
+  },
+  "intentOverrides": {
+    "archetypeIndicators": {
+      "dive_deep": [
+        "prescribing information", "clinical data", "safety", "mechanism of action",
+        "pharmacokinetics", "adverse reactions", "contraindications", "dosing",
+        "clinical trials", "efficacy", "study results", "PI", "full prescribing"
+      ],
+      "seek_action": [
+        "find a doctor", "patient support", "copay", "savings card",
+        "enroll", "sign up", "request samples", "prior authorization",
+        "patient assistance", "financial support"
+      ],
+      "explore": [
+        "about", "overview", "what is", "condition", "disease",
+        "symptoms", "treatment options", "living with"
+      ],
+      "compare": [
+        "vs", "comparison", "alternative", "switch", "treatment options"
+      ]
+    },
+    "confidenceBoosts": {
+      "hcp_indicator": 0.2,
+      "clinical_page_visit": 0.15,
+      "pi_download": 0.25,
+      "patient_portal": 0.1
+    }
+  },
+  "generationConstraints": {
+    "maxBlocksPerPage": 1,
+    "approvalRequired": true,
+    "requiredDisclaimers": [
+      {
+        "trigger": "drug_mention",
+        "text": "Please see full Prescribing Information, including Boxed WARNING.",
+        "position": "after"
+      },
+      {
+        "trigger": "efficacy_claim",
+        "text": "Individual results may vary. See full clinical trial data in the Prescribing Information.",
+        "position": "after"
+      },
+      {
+        "trigger": "isi_required",
+        "text": "IMPORTANT SAFETY INFORMATION: See accompanying full Prescribing Information.",
+        "position": "before"
+      }
+    ],
+    "forbiddenTopics": [
+      "off-label use",
+      "competitor comparison",
+      "pricing guarantee",
+      "cure claims",
+      "superiority claims without data",
+      "patient testimonials with outcomes",
+      "unapproved indications"
+    ],
+    "audienceDetection": [
+      {
+        "signal": "/hcp",
+        "audience": "hcp",
+        "action": "show_clinical_data"
+      },
+      {
+        "signal": "/prescribing-information",
+        "audience": "hcp",
+        "action": "show_clinical_data"
+      },
+      {
+        "signal": "/patients",
+        "audience": "patient",
+        "action": "show_support"
+      },
+      {
+        "signal": "/caregivers",
+        "audience": "caregiver",
+        "action": "show_support"
+      },
+      {
+        "signal": "clinical_data_repeat_visit",
+        "audience": "hcp",
+        "action": "show_advanced_clinical"
+      }
+    ],
+    "maxGenerationTokens": 500
+  },
+  "promptModifiers": {
+    "systemSuffix": "You MUST include required safety disclaimers. NEVER make claims not supported by the prescribing information. All generated content must be fair-balanced. Do not use superlatives or comparative claims without citing specific clinical data. Content for HCPs should reference study endpoints and statistical significance. Content for patients should be written at a 6th-grade reading level.",
+    "toneOverride": "clinical",
+    "contentRules": [
+      "Always include ISI reference when mentioning drug name",
+      "Never imply guaranteed outcomes",
+      "Distinguish HCP vs patient audience based on detected signals",
+      "Fair balance: benefits must be accompanied by risk information"
+    ]
+  },
+  "funnelStages": [
+    {
+      "name": "awareness",
+      "indicators": ["condition overview", "what is", "symptoms", "disease information"],
+      "contentMode": "educational"
+    },
+    {
+      "name": "consideration",
+      "indicators": ["treatment options", "how it works", "mechanism", "clinical data"],
+      "contentMode": "clinical_detail"
+    },
+    {
+      "name": "action",
+      "indicators": ["find doctor", "copay", "savings", "enroll", "patient support"],
+      "contentMode": "support_resources"
+    }
+  ],
+  "specialModes": [
+    {
+      "name": "hcp_mode",
+      "trigger": "audience_detected:hcp",
+      "description": "Clinical content for healthcare professionals",
+      "promptOverride": "Generate content suitable for healthcare professionals. Include relevant clinical endpoints, p-values, and study references. Use medical terminology appropriate for the specialty."
+    },
+    {
+      "name": "patient_mode",
+      "trigger": "audience_detected:patient",
+      "description": "Patient-friendly content with support resources",
+      "promptOverride": "Generate content for patients and caregivers. Use plain language (6th-grade reading level). Focus on quality of life, support programs, and next steps. Include links to patient support resources."
+    }
+  ]
+}

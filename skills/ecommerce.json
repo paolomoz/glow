@@ -1,0 +1,127 @@
+{
+  "$schema": "./_schema.json",
+  "siteType": "ecommerce",
+  "signalWeights": {
+    "click_target": 1.5,
+    "filter_select": 2.0,
+    "search_query": 2.0,
+    "scroll_depth": 0.8,
+    "hover_dwell": 1.3,
+    "page_visit": 1.0,
+    "form_interaction": 1.5,
+    "navigation": 1.2
+  },
+  "intentOverrides": {
+    "archetypeIndicators": {
+      "explore": [
+        "new arrivals", "trending", "bestsellers", "collections",
+        "categories", "shop all", "browse"
+      ],
+      "compare": [
+        "filter", "sort", "versus", "compare", "reviews",
+        "ratings", "specifications", "features"
+      ],
+      "dive_deep": [
+        "product details", "size guide", "materials", "warranty",
+        "shipping info", "return policy", "FAQ"
+      ],
+      "seek_action": [
+        "add to cart", "buy now", "checkout", "wishlist",
+        "notify me", "pre-order", "subscribe"
+      ],
+      "return": [
+        "order status", "track", "returns", "exchange",
+        "account", "reorder"
+      ]
+    },
+    "confidenceBoosts": {
+      "cart_interaction": 0.3,
+      "filter_use": 0.15,
+      "price_comparison": 0.2,
+      "repeat_category_visit": 0.1
+    }
+  },
+  "generationConstraints": {
+    "maxBlocksPerPage": 3,
+    "requiredDisclaimers": [
+      {
+        "trigger": "pricing",
+        "text": "Prices and availability subject to change.",
+        "position": "inline"
+      },
+      {
+        "trigger": "limited_stock",
+        "text": "While supplies last.",
+        "position": "inline"
+      }
+    ],
+    "forbiddenTopics": [
+      "competitor pricing",
+      "fake urgency without data",
+      "misleading discounts"
+    ],
+    "audienceDetection": [
+      {
+        "signal": "repeat_purchase_history",
+        "audience": "loyal_customer",
+        "action": "show_recommendations"
+      },
+      {
+        "signal": "first_visit_no_account",
+        "audience": "new_visitor",
+        "action": "show_value_proposition"
+      },
+      {
+        "signal": "cart_abandonment_return",
+        "audience": "cart_abandoner",
+        "action": "show_incentive"
+      }
+    ],
+    "maxGenerationTokens": 800
+  },
+  "promptModifiers": {
+    "systemSuffix": "Focus on product benefits and features. Use the brand voice. Do not invent product details not found in the content index. Prices must come from indexed data — never generate fictional prices. Urgency signals (limited stock, time-bound offers) must be grounded in real data.",
+    "contentRules": [
+      "Product comparisons must use only indexed product attributes",
+      "Never fabricate reviews or ratings",
+      "Price mentions must exactly match indexed prices",
+      "Urgency indicators must be data-driven"
+    ]
+  },
+  "funnelStages": [
+    {
+      "name": "browse",
+      "indicators": ["category page", "new arrivals", "collections", "shop all"],
+      "contentMode": "discovery"
+    },
+    {
+      "name": "compare",
+      "indicators": ["filter", "sort", "compare", "reviews", "specifications"],
+      "contentMode": "comparison"
+    },
+    {
+      "name": "decide",
+      "indicators": ["product detail", "size guide", "shipping", "returns"],
+      "contentMode": "decision_support"
+    },
+    {
+      "name": "purchase",
+      "indicators": ["add to cart", "checkout", "buy", "payment"],
+      "contentMode": "conversion"
+    }
+  ],
+  "specialModes": [
+    {
+      "name": "comparison_mode",
+      "trigger": "multiple_product_views",
+      "description": "Generate product comparison blocks when user views 3+ similar products",
+      "promptOverride": "Generate a clear product comparison highlighting key differentiators. Use a structured format (table or side-by-side). Only include attributes present in the content index."
+    },
+    {
+      "name": "urgency_mode",
+      "trigger": "low_stock_signal",
+      "description": "Subtle urgency indicators for genuinely low-stock items",
+      "promptOverride": "Include factual stock level information. Do not use manipulative dark patterns. State availability clearly and factually."
+    }
+  ]
+}

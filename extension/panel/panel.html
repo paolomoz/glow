@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Glow Debug Panel</title>
+  <style>
+    :root {
+      --glow-bg: #0f0f23;
+      --glow-surface: #1a1a2e;
+      --glow-border: #2d2d44;
+      --glow-text: #e2e8f0;
+      --glow-muted: #94a3b8;
+      --glow-accent: #8b5cf6;
+      --glow-accent-dim: rgba(139, 92, 246, 0.2);
+      --glow-green: #22c55e;
+      --glow-amber: #f59e0b;
+      --glow-red: #ef4444;
+      --glow-blue: #3b82f6;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      background: var(--glow-bg);
+      color: var(--glow-text);
+      font-size: 13px;
+      line-height: 1.5;
+      overflow-y: auto;
+    }
+
+    .panel-header {
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--glow-border);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      position: sticky;
+      top: 0;
+      background: var(--glow-bg);
+      z-index: 10;
+    }
+
+    .panel-header .logo {
+      font-size: 18px;
+      color: var(--glow-accent);
+    }
+
+    .panel-header h1 {
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .panel-header .status {
+      margin-left: auto;
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: 9999px;
+      background: var(--glow-accent-dim);
+      color: var(--glow-accent);
+    }
+
+    .section {
+      border-bottom: 1px solid var(--glow-border);
+      padding: 12px 16px;
+    }
+
+    .section-title {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--glow-muted);
+      margin-bottom: 8px;
+    }
+
+    /* API Key input */
+    .api-key-row {
+      display: flex;
+      gap: 8px;
+    }
+
+    .api-key-row input {
+      flex: 1;
+      background: var(--glow-surface);
+      border: 1px solid var(--glow-border);
+      border-radius: 6px;
+      padding: 6px 10px;
+      color: var(--glow-text);
+      font-size: 12px;
+      outline: none;
+    }
+
+    .api-key-row input:focus {
+      border-color: var(--glow-accent);
+    }
+
+    .btn {
+      padding: 6px 12px;
+      border-radius: 6px;
+      border: none;
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: 500;
+    }
+
+    .btn-primary {
+      background: var(--glow-accent);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      opacity: 0.9;
+    }
+
+    .btn-secondary {
+      background: var(--glow-surface);
+      color: var(--glow-text);
+      border: 1px solid var(--glow-border);
+    }
+
+    /* Intent Meter */
+    .intent-meter {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+
+    .confidence-bar {
+      flex: 1;
+      height: 8px;
+      background: var(--glow-surface);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .confidence-fill {
+      height: 100%;
+      border-radius: 4px;
+      transition: width 300ms ease, background 300ms ease;
+    }
+
+    .confidence-value {
+      font-size: 16px;
+      font-weight: 700;
+      font-variant-numeric: tabular-nums;
+      min-width: 36px;
+    }
+
+    .intent-details {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 4px 12px;
+      font-size: 12px;
+    }
+
+    .intent-details dt {
+      color: var(--glow-muted);
+    }
+
+    .intent-details dd {
+      font-weight: 500;
+    }
+
+    .archetype-badge {
+      display: inline-block;
+      padding: 1px 6px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    /* Signal Log */
+    .signal-log {
+      max-height: 200px;
+      overflow-y: auto;
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      font-size: 11px;
+    }
+
+    .signal-entry {
+      padding: 3px 0;
+      border-bottom: 1px solid rgba(45, 45, 68, 0.5);
+      display: flex;
+      gap: 8px;
+      align-items: baseline;
+    }
+
+    .signal-type {
+      color: var(--glow-accent);
+      font-weight: 600;
+      min-width: 90px;
+    }
+
+    .signal-time {
+      color: var(--glow-muted);
+      font-size: 10px;
+    }
+
+    .signal-data {
+      color: var(--glow-muted);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    /* Block Map */
+    .block-list {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .block-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 8px;
+      background: var(--glow-surface);
+      border-radius: 6px;
+      font-size: 12px;
+    }
+
+    .block-indicator {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+    }
+
+    .block-indicator.original { background: var(--glow-muted); }
+    .block-indicator.generated { background: var(--glow-accent); }
+
+    .block-meta {
+      margin-left: auto;
+      color: var(--glow-muted);
+      font-size: 11px;
+    }
+
+    /* Timing */
+    .timing-bar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 6px;
+    }
+
+    .timing-label {
+      min-width: 60px;
+      font-size: 11px;
+      color: var(--glow-muted);
+    }
+
+    .timing-track {
+      flex: 1;
+      height: 12px;
+      background: var(--glow-surface);
+      border-radius: 3px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .timing-fill {
+      height: 100%;
+      border-radius: 3px;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+
+    .timing-value {
+      font-size: 11px;
+      font-variant-numeric: tabular-nums;
+      min-width: 40px;
+      text-align: right;
+    }
+
+    .budget-line {
+      position: absolute;
+      right: 0;
+      top: -2px;
+      bottom: -2px;
+      width: 2px;
+      background: var(--glow-red);
+    }
+
+    /* Empty states */
+    .empty-state {
+      text-align: center;
+      padding: 20px;
+      color: var(--glow-muted);
+      font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+  <div class="panel-header">
+    <span class="logo">✦</span>
+    <h1>Glow</h1>
+    <span class="status" id="status-badge">Inactive</span>
+  </div>
+
+  <!-- API Key -->
+  <div class="section" id="api-key-section">
+    <div class="section-title">Cerebras API Key</div>
+    <div class="api-key-row">
+      <input type="password" id="api-key-input" placeholder="csk-..." />
+      <button class="btn btn-primary" id="save-key-btn">Save</button>
+    </div>
+  </div>
+
+  <!-- Intent Meter -->
+  <div class="section" id="intent-section">
+    <div class="section-title">Intent</div>
+    <div id="intent-content">
+      <div class="empty-state">Waiting for signals...</div>
+    </div>
+  </div>
+
+  <!-- Signal Log -->
+  <div class="section">
+    <div class="section-title">Signal Log</div>
+    <div class="signal-log" id="signal-log">
+      <div class="empty-state">No signals yet</div>
+    </div>
+  </div>
+
+  <!-- Block Map -->
+  <div class="section">
+    <div class="section-title">Blocks</div>
+    <div class="block-list" id="block-list">
+      <div class="empty-state">No blocks generated</div>
+    </div>
+  </div>
+
+  <!-- Timing -->
+  <div class="section">
+    <div class="section-title">Timing</div>
+    <div id="timing-content">
+      <div class="empty-state">No timing data</div>
+    </div>
+  </div>
+
+  <!-- Index Status -->
+  <div class="section" id="index-section">
+    <div class="section-title">Content Index</div>
+    <div id="index-content">
+      <div class="empty-state">Not indexed</div>
+    </div>
+  </div>
+
+  <script type="module" src="panel.js"></script>
+</body>
+</html>

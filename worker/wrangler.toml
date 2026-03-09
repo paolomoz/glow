@@ -1,0 +1,58 @@
+# worker/wrangler.toml — Cloudflare Worker configuration
+# CC-4.1.7: KV namespaces, R2, Vectorize, Durable Object, Workers AI, secrets
+
+name = "glow-worker"
+main = "index.ts"
+compatibility_date = "2024-12-01"
+compatibility_flags = ["nodejs_compat"]
+
+# Durable Objects
+[durable_objects]
+bindings = [
+  { name = "USER_SESSION", class_name = "UserSession" }
+]
+
+[[migrations]]
+tag = "v1"
+new_classes = ["UserSession"]
+
+# KV Namespaces
+[[kv_namespaces]]
+binding = "BLOCKS_KV"
+id = "PLACEHOLDER_BLOCKS_KV_ID"
+preview_id = "PLACEHOLDER_BLOCKS_KV_PREVIEW_ID"
+
+[[kv_namespaces]]
+binding = "CACHE_KV"
+id = "PLACEHOLDER_CACHE_KV_ID"
+preview_id = "PLACEHOLDER_CACHE_KV_PREVIEW_ID"
+
+# R2 Bucket
+[[r2_buckets]]
+binding = "CONTENT_R2"
+bucket_name = "glow-content"
+
+# Vectorize Index
+[[vectorize]]
+binding = "CONTENT_VECTORIZE"
+index_name = "glow-atoms"
+
+# Workers AI
+[ai]
+binding = "AI"
+
+# Environment variables
+[vars]
+ALLOWED_ORIGINS = ""
+
+# Secrets (set via `wrangler secret put CEREBRAS_API_KEY`)
+# CEREBRAS_API_KEY = "..."
+
+# Build
+[build]
+command = "npm run build"
+
+# Dev server
+[dev]
+port = 8787
+local_protocol = "http"

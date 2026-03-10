@@ -1,24 +1,25 @@
 import { defineConfig } from 'vite';
 import path from 'path';
 
+const alias = {
+  '@glow/core': path.resolve(__dirname, '../core'),
+};
+
+const dist = path.resolve(__dirname, '../dist/extension');
+
+// Single build with all entry points.
+// Content script runs in a non-module context, so we need it self-contained.
+// Service worker and panel run as ES modules.
 export default defineConfig({
-  resolve: {
-    alias: {
-      '@glow/core': path.resolve(__dirname, '../core'),
-    },
-  },
+  resolve: { alias },
   build: {
-    outDir: '../dist/extension',
+    outDir: dist,
     emptyOutDir: true,
     rollupOptions: {
       input: {
         'background/service-worker': path.resolve(
           __dirname,
           'background/service-worker.ts',
-        ),
-        'content-script/index': path.resolve(
-          __dirname,
-          'content-script/index.ts',
         ),
         'panel/panel': path.resolve(__dirname, 'panel/panel.ts'),
       },

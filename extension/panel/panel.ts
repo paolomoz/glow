@@ -26,6 +26,10 @@ const intentContent = document.getElementById('intent-content')!;
 const signalLog = document.getElementById('signal-log')!;
 const blockList = document.getElementById('block-list')!;
 const timingContent = document.getElementById('timing-content')!;
+const importBtn = document.getElementById('import-btn')!;
+const importFile = document.getElementById('import-file') as HTMLInputElement;
+const importStatus = document.getElementById('import-status')!;
+const indexContent = document.getElementById('index-content')!;
 
 // ---------------------------------------------------------------------------
 // API Key management
@@ -116,6 +120,64 @@ chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
       }
     },
   );
+});
+
+// ---------------------------------------------------------------------------
+// Status management
+// ---------------------------------------------------------------------------
+
+// ---------------------------------------------------------------------------
+// Index import
+// ---------------------------------------------------------------------------
+
+importBtn.addEventListener('click', () => {
+  importFile.click();
+});
+
+importFile.addEventListener('change', async () => {
+  const file = importFile.files?.[0];
+  if (!file) return;
+
+  importStatus.textContent = 'Reading...';
+  importBtn.setAttribute('disabled', 'true');
+
+  try {
+    const text = await file.text();
+    const index = JSON.parse(text);
+
+    if (!index.atoms || !index.templates || !index.brandProfile) {
+      importStatus.textContent = 'Invalid index file';
+      importBtn.removeAttribute('disabled');
+      return;
+    }
+
+    importStatus.textContent = `Importing ${index.atoms.length} atoms...`;
+
+    chrome.runtime.sendMessage(
+      { type: 'IMPORT_INDEX', index },
+      (response) => {
+        importBtn.removeAttribute('disabled');
+        if (response?.success) {
+          importStatus.textContent = `${response.atomCount} atoms, ${response.templateCount} templates`;
+          indexContent.innerHTML = `
+            <div style="font-size: 12px;">
+              <div><strong>${response.atomCount}</strong> atoms</div>
+              <div><strong>${response.templateCount}</strong> templates</div>
+              <div style="color: var(--glow-green);">Indexed</div>
+            </div>
+          `;
+        } else {
+          importStatus.textContent = `Error: ${response?.error ?? 'unknown'}`;
+        }
+      },
+    );
+  } catch (err) {
+    importStatus.textContent = `Parse error: ${err}`;
+    importBtn.removeAttribute('disabled');
+  }
+
+  // Reset file input
+  importFile.value = '';
 });
 
 // ---------------------------------------------------------------------------

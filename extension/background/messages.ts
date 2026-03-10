@@ -82,6 +82,11 @@ export interface GetIndexStatusMessage {
   siteId: string;
 }
 
+export interface ImportIndexMessage {
+  type: 'IMPORT_INDEX';
+  index: ContentIndex;
+}
+
 export interface IndexStatusResponse {
   indexed: boolean;
   atomCount: number;
@@ -106,7 +111,8 @@ export type ExtensionMessage =
   | BlockGeneratedMessage
   | SetApiKeyMessage
   | GetApiKeyMessage
-  | GetIndexStatusMessage;
+  | GetIndexStatusMessage
+  | ImportIndexMessage;
 
 /** Icon state for the extension action badge. */
 export type IconState = 'inactive' | 'indexing' | 'active' | 'generating';

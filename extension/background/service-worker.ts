@@ -10,8 +10,10 @@ import type {
   IconState,
   SignalBatchMessage,
   IndexSiteMessage,
+  ImportIndexMessage,
 } from './messages.js';
 import { SessionManager } from './session.js';
+import { IndexedDBStorageAdapter } from '../storage/indexeddb-adapter.js';
 
 // ---------------------------------------------------------------------------
 // State
@@ -70,41 +72,52 @@ async function setApiKey(key: string): Promise<void> {
   await initOrchestrator();
 }
 
-async function initOrchestrator(): Promise<DefaultOrchestrator | null> {
+let storageAdapter: IndexedDBStorageAdapter | null = null;
+
+function getStorage(): IndexedDBStorageAdapter {
+  if (!storageAdapter) {
+    storageAdapter = new IndexedDBStorageAdapter();
+  }
+  return storageAdapter;
+}
+
+async function initOrchestrator(siteId?: string): Promise<DefaultOrchestrator | null> {
   const apiKey = await getApiKey();
   if (!apiKey) return null;
 
-  const { IndexedDBStorageAdapter } = await import('../storage/indexeddb-adapter.js');
-  const storage = new IndexedDBStorageAdapter();
+  const storage = getStorage();
   const cerebrasClient = new DefaultCerebrasClient({
     apiKey,
     baseUrl: 'https://api.cerebras.ai/v1',
     defaultTimeoutMs: 5000,
   });
 
-  // Need a brand profile — get from storage for current site
-  const brandProfile = {
-    siteId: '',
-    voice: {
-      tone: ['professional'],
-      formality: 'balanced' as const,
-      personPerspective: 'second' as const,
-      characteristicPhrases: [],
-    },
-    visual: {
-      primaryColors: [],
-      fontFamilies: [],
-      spacingScale: [],
-    },
-    guardrails: {
-      forbiddenTerms: [],
-      requiredDisclaimers: [],
-      approvalRequired: false,
-      maxGeneratedBlocksPerPage: 5,
-    },
-    siteType: 'other' as const,
-    skillConfig: 'default',
-  };
+  // Load brand profile from IndexedDB for the current site
+  let brandProfile = siteId ? await storage.getBrandProfile(siteId) : null;
+  if (!brandProfile) {
+    brandProfile = {
+      siteId: siteId ?? '',
+      voice: {
+        tone: ['professional'],
+        formality: 'balanced' as const,
+        personPerspective: 'second' as const,
+        characteristicPhrases: [],
+      },
+      visual: {
+        primaryColors: [],
+        fontFamilies: [],
+        spacingScale: [],
+      },
+      guardrails: {
+        forbiddenTerms: [],
+        requiredDisclaimers: [],
+        approvalRequired: false,
+        maxGeneratedBlocksPerPage: 5,
+      },
+      siteType: 'other' as const,
+      skillConfig: 'default',
+    };
+  }
 
   orchestrator = new DefaultOrchestrator({
     intentEngine,
@@ -128,7 +141,7 @@ async function handleSignalBatch(
   const session = sessionManager.getSession(tabId, siteId);
 
   if (!orchestrator) {
-    await initOrchestrator();
+    await initOrchestrator(siteId);
   }
 
   if (!orchestrator) {
@@ -193,6 +206,56 @@ function notifyPanel(tabId: number, message: ExtensionMessage): void {
 }
 
 // ---------------------------------------------------------------------------
+// Index import
+// ---------------------------------------------------------------------------
+
+async function handleImportIndex(
+  msg: ImportIndexMessage,
+): Promise<{ success: boolean; atomCount: number; templateCount: number; error?: string }> {
+  try {
+    const storage = getStorage();
+    const { index } = msg;
+
+    // Store atoms, templates, and brand profile
+    await storage.storeAtoms(index.atoms);
+    await storage.storeTemplates(index.templates);
+    await storage.storeBrandProfile(index.brandProfile);
+
+    // Re-initialize orchestrator with new brand profile
+    orchestrator = null;
+    await initOrchestrator(index.siteId);
+
+    return {
+      success: true,
+      atomCount: index.atoms.length,
+      templateCount: index.templates.length,
+    };
+  } catch (err) {
+    return {
+      success: false,
+      atomCount: 0,
+      templateCount: 0,
+      error: String(err),
+    };
+  }
+}
+
+async function handleGetIndexStatus(
+  siteId: string,
+): Promise<{ indexed: boolean; atomCount: number; templateCount: number }> {
+  try {
+    const storage = getStorage();
+    const stats = await storage.getIndexStats(siteId);
+    return {
+      indexed: stats.atomCount > 0,
+      ...stats,
+    };
+  } catch {
+    return { indexed: false, atomCount: 0, templateCount: 0 };
+  }
+}
+
+// ---------------------------------------------------------------------------
 // Message handlers
 // ---------------------------------------------------------------------------
 
@@ -241,6 +304,18 @@ chrome.runtime.onMessage.addListener(
         sendResponse({ intent: sess?.intent ?? null });
         return false;
       }
+
+      case 'IMPORT_INDEX':
+        handleImportIndex(message).then((result) => {
+          sendResponse(result);
+        });
+        return true;
+
+      case 'GET_INDEX_STATUS':
+        handleGetIndexStatus(message.siteId).then((result) => {
+          sendResponse(result);
+        });
+        return true;
 
       default:
         return false;

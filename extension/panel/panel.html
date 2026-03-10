@@ -349,6 +349,11 @@
     <div id="index-content">
       <div class="empty-state">Not indexed</div>
     </div>
+    <div style="margin-top: 8px;">
+      <input type="file" id="import-file" accept=".json" style="display: none;" />
+      <button class="btn btn-secondary" id="import-btn">Import Index JSON</button>
+      <span id="import-status" style="font-size: 11px; color: var(--glow-muted); margin-left: 8px;"></span>
+    </div>
   </div>
 
   <script type="module" src="panel.js"></script>

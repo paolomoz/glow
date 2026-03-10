@@ -55,7 +55,7 @@ const VALID_SIGNAL_TYPES: Set<string> = new Set<string>([
   'viewport_block_visibility',
 ]);
 
-const CTA_PATTERNS = /\b(buy|sign.?up|subscribe|get.?started|register|download|try|free.?trial|add.?to.?cart|checkout|contact|demo|pricing)\b/i;
+const CTA_PATTERNS = /\b(buy|sign.?up|subscribe|get.?started|register|download|try|free.?trial|add.?to.?cart|checkout|contact|demo|pricing|quote|schedule|book|order|apply|configure|build|reserve|request|estimate|shop|cart)\b/i;
 const COMPARISON_PATTERNS = /\b(compare|versus|vs|difference|alternative|similar|review)\b/i;
 const DETAIL_PATTERNS = /\b(expand|more|detail|read.?more|show|learn.?more|view.?all)\b/i;
 

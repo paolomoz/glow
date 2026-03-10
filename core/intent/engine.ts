@@ -71,14 +71,21 @@ export class DefaultIntentEngine implements IntentEngine {
       }
     }
 
-    // 4. Compute confidence (normalize best score relative to total)
-    const totalScore = [...scores.values()].reduce((a, b) => a + Math.max(0, b), 0);
-    let rawConfidence = totalScore > 0 ? bestScore / totalScore : 0;
+    // 4. Compute confidence from how much the best archetype stands out
+    // Subtract the minimum score to remove shared-feature baseline inflation,
+    // then compute the best's share of the remaining discriminating signal.
+    const allScores = [...scores.values()];
+    const minScore = Math.min(...allScores);
+    const adjusted = allScores.map((s) => Math.max(0, s - minScore));
+    const adjustedTotal = adjusted.reduce((a, b) => a + b, 0);
+    const adjustedBest = bestScore - minScore;
+    let rawConfidence = adjustedTotal > 0 ? adjustedBest / adjustedTotal : 0;
 
     // Boost confidence with signal count (more signals = more confident)
+    // Low signal counts get heavily penalized — need at least ~5 signals for meaningful inference
     const totalSignals = Object.values(aggregated.signalCounts).reduce((a, b) => a + (b ?? 0), 0);
     const signalBoost = Math.min(1, totalSignals / 20); // saturates at 20 signals
-    rawConfidence = rawConfidence * (0.5 + 0.5 * signalBoost);
+    rawConfidence = rawConfidence * (0.3 + 0.7 * signalBoost);
 
     // 5. Apply momentum blending with prior intent
     let confidence = rawConfidence;

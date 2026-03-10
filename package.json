@@ -14,7 +14,7 @@
     "build": "tsc -b",
     "build:core": "tsc -p core/tsconfig.json",
     "build:worker": "cd worker && npx wrangler deploy --dry-run",
-    "build:extension": "cd extension && npx vite build",
+    "build:extension": "npx vite build --config extension/vite.config.ts && npx vite build --config extension/vite.config.content.ts && cp extension/manifest.json dist/extension/ && mkdir -p dist/extension/panel && cp extension/panel/panel.html dist/extension/panel/ && mkdir -p dist/extension/icons && cp extension/icons/*.png dist/extension/icons/",
     "build:snippet": "cd snippet && npx vite build",
     "test": "vitest",
     "test:run": "vitest run",

@@ -665,7 +665,13 @@ describe('Pipeline Orchestrator', () => {
   it('enforces total time budget', async () => {
     const cerebras = {
       complete: vi.fn().mockImplementation(
-        () => new Promise((resolve) => setTimeout(resolve, 5000)), // Simulate slow
+        (_config: unknown, signal?: AbortSignal) => new Promise((resolve, reject) => {
+          const timer = setTimeout(resolve, 5000);
+          signal?.addEventListener('abort', () => {
+            clearTimeout(timer);
+            reject(new DOMException('Aborted', 'AbortError'));
+          });
+        }),
       ),
     };
 

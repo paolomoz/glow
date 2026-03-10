@@ -157,6 +157,7 @@ async function handleSignalBatch(
   });
 
   try {
+    console.log(`[glow] Processing ${msg.signals.length} signals for ${siteId}, session=${session.sessionId}`);
     const result = await orchestrator.process(
       siteId,
       session.sessionId,
@@ -164,6 +165,7 @@ async function handleSignalBatch(
       msg.signals,
     );
 
+    console.log(`[glow] Result: archetype=${result.intent.archetype}, confidence=${result.intent.confidence.toFixed(3)}, blocks=${result.blocks.length}`);
     sessionManager.updateIntent(tabId, result.intent);
 
     // Notify panel of intent update
@@ -184,7 +186,8 @@ async function handleSignalBatch(
 
     setIconState(tabId, result.blocks.length > 0 ? 'active' : 'active');
     return result.blocks;
-  } catch {
+  } catch (err) {
+    console.error(`[glow] Error processing signals:`, err);
     setIconState(tabId, 'active');
     return [];
   }

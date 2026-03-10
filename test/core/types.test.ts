@@ -58,6 +58,7 @@ describe('Core Types', () => {
       siteId: 'site-1',
       sourceUrl: 'https://example.com',
       blockType: 'hero',
+      selector: '#hero',
       htmlShell: '<div class="hero">{{headline}}</div>',
       cssRules: '.hero { font-size: 2rem; }',
       slots: [

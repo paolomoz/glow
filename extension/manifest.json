@@ -9,6 +9,9 @@
     "storage",
     "sidePanel"
   ],
+  "host_permissions": [
+    "https://api.cerebras.ai/*"
+  ],
   "background": {
     "service_worker": "background/service-worker.js",
     "type": "module"

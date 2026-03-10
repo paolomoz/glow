@@ -82,10 +82,10 @@ export class DefaultIntentEngine implements IntentEngine {
     let rawConfidence = adjustedTotal > 0 ? adjustedBest / adjustedTotal : 0;
 
     // Boost confidence with signal count (more signals = more confident)
-    // Low signal counts get heavily penalized — need at least ~5 signals for meaningful inference
+    // Low signal counts get penalized — saturates at 10 signals for real browsing behavior
     const totalSignals = Object.values(aggregated.signalCounts).reduce((a, b) => a + (b ?? 0), 0);
-    const signalBoost = Math.min(1, totalSignals / 20); // saturates at 20 signals
-    rawConfidence = rawConfidence * (0.3 + 0.7 * signalBoost);
+    const signalBoost = Math.min(1, totalSignals / 10);
+    rawConfidence = rawConfidence * (0.5 + 0.5 * signalBoost);
 
     // 5. Apply momentum blending with prior intent
     let confidence = rawConfidence;

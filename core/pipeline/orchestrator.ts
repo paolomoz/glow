@@ -232,7 +232,7 @@ export class DefaultOrchestrator implements Orchestrator {
       );
 
       return {
-        selector: `[data-template-id="${template.id}"]`,
+        selector: template.selector,
         html,
         templateId: template.id,
         atomIds: atoms.map((a) => a.id),

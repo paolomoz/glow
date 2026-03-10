@@ -121,7 +121,7 @@ export class SignalCollector {
   private attachHoverListener(): void {
     const handleMouseEnter = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
-      if (!target || !isContentBlock(target)) return;
+      if (!target || !target.tagName || !isContentBlock(target)) return;
 
       const selector = buildSelector(target);
       this.hoverTimers.set(
@@ -139,7 +139,7 @@ export class SignalCollector {
 
     const handleMouseLeave = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
-      if (!target) return;
+      if (!target || !target.tagName) return;
       const selector = buildSelector(target);
       const timer = this.hoverTimers.get(selector);
       if (timer !== undefined) {
@@ -307,6 +307,7 @@ export class SignalCollector {
 
 /** Build a concise CSS selector for an element. */
 export function buildSelector(el: HTMLElement): string {
+  if (!el || !el.tagName) return 'unknown';
   if (el.id) return `#${el.id}`;
 
   const tag = el.tagName.toLowerCase();

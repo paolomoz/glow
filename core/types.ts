@@ -99,6 +99,8 @@ export interface BlockTemplate {
   siteId: string;
   sourceUrl: string;
   blockType: string;
+  /** CSS selector for the page element this template replaces. */
+  selector: string;
   htmlShell: string;
   cssRules: string;
   slots: SlotDefinition[];

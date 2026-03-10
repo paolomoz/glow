@@ -95,6 +95,7 @@ function makeTemplate(id: string, position: BlockPosition = 'hero'): BlockTempla
     siteId: 'test-site',
     sourceUrl: 'https://example.com/',
     blockType: 'section',
+    selector: position === 'hero' ? '#hero' : `.section-${position}`,
     htmlShell: '<section><h1>{{headline}}</h1><p>{{body}}</p></section>',
     cssRules: 'padding: 20px; color: #333',
     slots,
@@ -605,12 +606,13 @@ describe('Pipeline Orchestrator', () => {
       brandProfile: mockBrand,
     });
 
-    // Send a single weak signal — should produce low confidence
+    // Send a single ambiguous signal — should produce low confidence
+    // A shallow scroll alone doesn't strongly indicate any archetype
     const result = await orchestrator.process('site-1', 'sess-1', 'https://example.com/', [
       {
-        type: 'page_visit',
+        type: 'scroll_depth',
         timestamp: new Date().toISOString(),
-        data: { url: 'https://example.com/', referrer: '', title: 'Home' },
+        data: { depth: 0.2, maxDepth: 0.2 },
         pageUrl: 'https://example.com/',
       },
     ]);

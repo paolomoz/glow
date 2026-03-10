@@ -3,6 +3,7 @@
 
 import type {
   Signal,
+  IntentVector,
   PipelineResult,
   BlockReplacement,
   BlockPosition,

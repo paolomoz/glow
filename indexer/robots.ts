@@ -104,9 +104,13 @@ export async function fetchRobotsTxt(
 ): Promise<RobotsRules | null> {
   try {
     const url = `${origin}/robots.txt`;
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), 10_000);
     const response = await fetchFn(url, {
       headers: { 'User-Agent': 'glow-crawler/1.0' },
+      signal: controller.signal,
     });
+    clearTimeout(timer);
     if (!response.ok) return null;
     const text = await response.text();
     return parseRobotsTxt(text);

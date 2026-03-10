@@ -8,7 +8,7 @@ import type {
   BrandProfile,
 } from '@glow/core';
 import type { CerebrasClient } from '../core/generation/cerebras-client.js';
-import type { CrawlerConfig, CrawlProgress } from './crawler.js';
+import type { CrawlerConfig } from './crawler.js';
 import type { EmbedderConfig } from './embedder.js';
 import type { ProfilerConfig } from './profiler.js';
 import type { ChunkerOptions } from './chunker.js';
@@ -68,17 +68,15 @@ export async function buildContentIndex(
 
   // Stage 1: Crawl
   onProgress?.('crawling', `Starting crawl from ${seedUrl}`);
-  const crawlProgress: CrawlProgress = (url, count, total) => {
-    onProgress?.('crawling', `Crawled ${count}/${total}: ${url}`);
-  };
 
   const crawlResults = await crawlSite(seedUrl, {
     maxPages: config.crawler?.maxPages ?? 50,
     maxDepth: config.crawler?.maxDepth ?? 3,
-    respectRobots: config.crawler?.respectRobots ?? true,
-    useSitemap: config.crawler?.useSitemap ?? true,
-    onProgress: crawlProgress,
     ...config.crawler,
+    onPageCrawled: (result, progress) => {
+      onProgress?.('crawling', `Crawled ${progress.crawled}/${progress.maxPages}: ${result.url}`);
+      config.crawler?.onPageCrawled?.(result, progress);
+    },
   });
 
   // Stage 2: Extract
@@ -92,13 +90,17 @@ export async function buildContentIndex(
 
   for (const result of crawlResults) {
     // Parse HTML into a document — use DOMParser in browser or a provided parser
-    const doc = parseHtml(result.html, result.url);
-    if (!doc) continue;
+    const doc = await parseHtml(result.html, result.url);
+    if (!doc) {
+      onProgress?.('extracting', `Failed to parse HTML for ${result.url}`);
+      continue;
+    }
 
     allUrls.push(result.url);
 
     // Detect blocks
     const blocks = detectBlocks(doc);
+    onProgress?.('extracting', `${result.url}: ${blocks.length} blocks detected (html: ${result.html.length} bytes, body children: ${doc.body?.children.length ?? 0})`);
 
     // Extract templates
     const templates = extractTemplates(blocks, {
@@ -204,7 +206,7 @@ export async function buildContentIndex(
  * Parse HTML string into a Document.
  * Works in browser via DOMParser and in Node via JSDOM (if available).
  */
-function parseHtml(html: string, url: string): Document | null {
+async function parseHtml(html: string, url: string): Promise<Document | null> {
   // Browser environment
   if (typeof DOMParser !== 'undefined') {
     try {
@@ -217,9 +219,8 @@ function parseHtml(html: string, url: string): Document | null {
 
   // Node environment — try JSDOM if available
   try {
-    // Dynamic import to avoid bundling JSDOM in browser builds
-    const { JSDOM } = require('jsdom');
-    const dom = new JSDOM(html, { url });
+    const jsdom = await import('jsdom');
+    const dom = new jsdom.JSDOM(html, { url });
     return dom.window.document;
   } catch {
     return null;

@@ -76,7 +76,11 @@ async function initOrchestrator(): Promise<DefaultOrchestrator | null> {
 
   const { IndexedDBStorageAdapter } = await import('../storage/indexeddb-adapter.js');
   const storage = new IndexedDBStorageAdapter();
-  const cerebrasClient = new DefaultCerebrasClient({ apiKey });
+  const cerebrasClient = new DefaultCerebrasClient({
+    apiKey,
+    baseUrl: 'https://api.cerebras.ai/v1',
+    defaultTimeoutMs: 5000,
+  });
 
   // Need a brand profile — get from storage for current site
   const brandProfile = {

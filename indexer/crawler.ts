@@ -168,30 +168,37 @@ async function discoverSitemapUrls(
 
   const urls: string[] = [];
 
+  const SITEMAP_TIMEOUT_MS = 10_000;
+
   for (const sitemapUrl of sitemapLocations) {
     try {
+      const controller = new AbortController();
+      const timer = setTimeout(() => controller.abort(), SITEMAP_TIMEOUT_MS);
       const response = await fetchFn(sitemapUrl, {
         headers: { 'User-Agent': 'glow-crawler/1.0' },
+        signal: controller.signal,
       });
+      clearTimeout(timer);
       if (!response.ok) continue;
 
       const text = await response.text();
       const contentType = response.headers.get('content-type') ?? '';
 
       if (contentType.includes('text/plain')) {
-        // Plain text sitemap
         const entries = parseTextSitemap(text);
         urls.push(...entries.map((e) => e.url));
       } else {
-        // XML sitemap or sitemap index
         if (isSitemapIndex(text)) {
-          // Recursively fetch child sitemaps
           const childSitemaps = parseSitemap(text);
           for (const child of childSitemaps) {
             try {
+              const childController = new AbortController();
+              const childTimer = setTimeout(() => childController.abort(), SITEMAP_TIMEOUT_MS);
               const childResponse = await fetchFn(child.url, {
                 headers: { 'User-Agent': 'glow-crawler/1.0' },
+                signal: childController.signal,
               });
+              clearTimeout(childTimer);
               if (childResponse.ok) {
                 const childText = await childResponse.text();
                 const childEntries = parseSitemap(childText);

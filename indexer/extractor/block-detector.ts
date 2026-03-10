@@ -142,24 +142,6 @@ function isBlockBoundary(
 
   // Divs with significant visual separation
   if (tag === 'div' || tag === 'form') {
-    const style = getComputedStyleSafe(el, doc);
-    if (!style) return false;
-
-    // Check for visual gaps (margin or padding creating separation)
-    const marginTop = parseFloat(style.marginTop) || 0;
-    const marginBottom = parseFloat(style.marginBottom) || 0;
-    const paddingTop = parseFloat(style.paddingTop) || 0;
-    const paddingBottom = parseFloat(style.paddingBottom) || 0;
-
-    const hasVisualGap =
-      marginTop >= opts.gapThreshold ||
-      marginBottom >= opts.gapThreshold ||
-      paddingTop >= opts.gapThreshold ||
-      paddingBottom >= opts.gapThreshold;
-
-    // Check for background color boundary
-    const hasBackgroundBoundary = hasDistinctBackground(el, doc);
-
     // Check for role attributes that indicate a section
     const role = el.getAttribute('role');
     const hasBlockRole =
@@ -170,10 +152,60 @@ function isBlockBoundary(
       role === 'main';
 
     if (hasBlockRole) return true;
-    if (hasVisualGap && hasTextContent(el, opts.minContentLength)) return true;
-    if (hasBackgroundBoundary && hasTextContent(el, opts.minContentLength))
+
+    // Check computed styles (works in browser, limited in jsdom)
+    const style = getComputedStyleSafe(el, doc);
+    if (style) {
+      const marginTop = parseFloat(style.marginTop) || 0;
+      const marginBottom = parseFloat(style.marginBottom) || 0;
+      const paddingTop = parseFloat(style.paddingTop) || 0;
+      const paddingBottom = parseFloat(style.paddingBottom) || 0;
+
+      const hasVisualGap =
+        marginTop >= opts.gapThreshold ||
+        marginBottom >= opts.gapThreshold ||
+        paddingTop >= opts.gapThreshold ||
+        paddingBottom >= opts.gapThreshold;
+
+      const hasBackgroundBoundary = hasDistinctBackground(el, doc);
+
+      if (hasVisualGap && hasTextContent(el, opts.minContentLength)) return true;
+      if (hasBackgroundBoundary && hasTextContent(el, opts.minContentLength))
+        return true;
+    }
+
+    // Content-based heuristic: divs that contain headings + text/images
+    // are likely content blocks, even without computed style info.
+    // This enables block detection in jsdom where getComputedStyle is limited.
+    if (hasTextContent(el, opts.minContentLength) && isContentBlock(el)) {
       return true;
+    }
   }
+
+  return false;
+}
+
+/**
+ * Content-based block detection heuristic.
+ * A div is likely a content block if it contains headings paired with
+ * body text, images, or links — common patterns for content sections.
+ * Avoids matching pure wrapper divs that just nest other divs.
+ */
+function isContentBlock(el: Element): boolean {
+  const hasHeading = el.querySelector('h1, h2, h3, h4, h5, h6') !== null;
+  const hasImage = el.querySelector('img, picture, video') !== null;
+  const hasLink = el.querySelector('a[href]') !== null;
+  const hasParagraph = el.querySelector('p') !== null;
+
+  // Must have a heading or image to qualify
+  if (!hasHeading && !hasImage) return false;
+
+  // Must also have body content (paragraph or link) — headings alone
+  // are typically navigation items, not content blocks
+  if (hasHeading && (hasParagraph || hasLink || hasImage)) return true;
+
+  // Image sections with links (e.g., hero banners, card grids)
+  if (hasImage && hasLink) return true;
 
   return false;
 }

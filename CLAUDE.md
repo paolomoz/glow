@@ -59,9 +59,20 @@ Cerebras inference (GPT-OSS-120B, GLM-4.7, GLM-4.7-Flash). Cloudflare edge deplo
 - Each improvement entry should include: file path, issue description, impact, and suggested fix
 - When an improvement is implemented, remove it from the file or mark it with `[DONE]`
 
+## Implementation Approach
+- Build the real system, not throwaway demos — every hour of work must advance production code
+- Never customize implementation for a specific target site — the system must work for any site
+- When hitting a blocker, mock only the specific thing that's blocking (e.g., API down, site uncrawlable) — not entire subsystems
+- Test against real sites, real Cerebras API calls, real indexer output
+- The extension is the primary demo vehicle; the Worker is the production path
+- ChatGPT conversations are an intent source — parse them into the existing intent system, don't build a parallel path
+
 ## Don't
 - Add LLM calls to the intent engine hot path
 - Use external stylesheets in injected blocks
 - Store PII in any storage layer
 - Exceed 2,000 input tokens in generation prompts
 - Generate content not grounded in indexed content atoms (no hallucinated facts)
+- Build throwaway demo harnesses or in-memory adapters that duplicate real storage paths
+- Hardcode fixtures when the real indexer/extractor can produce the data
+- Customize logic for a specific target site

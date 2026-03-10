@@ -79,6 +79,8 @@ export async function handleBlocks(
   const storage = new KVStorageAdapter(env.BLOCKS_KV, env.CACHE_KV);
   const cerebrasClient = new DefaultCerebrasClient({
     apiKey: env.CEREBRAS_API_KEY,
+    baseUrl: 'https://api.cerebras.ai/v1',
+    defaultTimeoutMs: 5000,
   });
   const intentEngine = new DefaultIntentEngine();
 

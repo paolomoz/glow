@@ -1,7 +1,13 @@
 # Glow — Generative Layer Over Web
 
-## Implementation Plan
-See [PLAN.md](./PLAN.md) for the full implementation plan with phases, task IDs, and dependency graph.
+## Documentation
+- [docs/README.md](./docs/README.md) — Entry point, task routing, layer quick reference
+- [docs/architecture.md](./docs/architecture.md) — Layer stack, source tree, file-finding guide, data flows
+- [docs/development.md](./docs/development.md) — Commands, env vars, verification checklist
+- [docs/testing.md](./docs/testing.md) — Test patterns, mocking, fixtures
+- [docs/adding-features.md](./docs/adding-features.md) — Step-by-step guides for 8 common tasks
+- [docs/pitfalls.md](./docs/pitfalls.md) — Common mistakes and gotchas
+- [PLAN.md](./PLAN.md) — Implementation plan with phases, task IDs, and dependency graph
 
 ## Project Overview
 Real-time generative personalization overlay for any website. Sub-2.5s click-to-LCP.
@@ -45,6 +51,13 @@ Cerebras inference (GPT-OSS-120B, GLM-4.7, GLM-4.7-Flash). Cloudflare edge deplo
 - Types: PascalCase (ContentAtom, BlockTemplate)
 - Functions: camelCase (buildPrompt, routeModel)
 - Constants: SCREAMING_SNAKE (MAX_GENERATION_TIME_MS, MIN_CONFIDENCE_THRESHOLD)
+
+## Improvement Tracking
+- Improvement opportunities are tracked in `improvements/` as markdown files, organized by area
+- Current files: `intent-engine.md`, `pipeline-generation.md`, `indexer-worker.md`
+- When reviewing code or discussing changes, log new improvement observations to the appropriate file
+- Each improvement entry should include: file path, issue description, impact, and suggested fix
+- When an improvement is implemented, remove it from the file or mark it with `[DONE]`
 
 ## Don't
 - Add LLM calls to the intent engine hot path

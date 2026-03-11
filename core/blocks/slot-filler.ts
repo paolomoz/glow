@@ -43,11 +43,14 @@ export class DefaultSlotFiller implements SlotFiller {
           : value;
 
         result = result.replaceAll(placeholder, escapeHtml(trimmedValue));
-      } else if (slot.constraints.required) {
-        // Required slot not filled — use original content as fallback
+      } else {
+        // Slot not filled — use original content as fallback (required or optional)
         result = result.replaceAll(placeholder, escapeHtml(slot.originalContent));
       }
     }
+
+    // Safety net: strip any remaining {{...}} placeholders (e.g. from LLM output)
+    result = result.replace(/\{\{[^}]+\}\}/g, '');
 
     return result;
   }

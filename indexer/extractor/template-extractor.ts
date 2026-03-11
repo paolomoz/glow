@@ -41,8 +41,9 @@ export function extractTemplate(
 ): BlockTemplate {
   SLOT_COUNTER.value = 0;
 
-  // Identify slots within the block
-  const slots = identifySlots(block.element);
+  // Identify slots within the block (cap at 8 to keep LLM prompts manageable)
+  const allSlots = identifySlots(block.element);
+  const slots = allSlots.slice(0, 8);
 
   // Clone the element and replace content with placeholders
   const clone = block.element.cloneNode(true) as Element;
@@ -67,6 +68,7 @@ export function extractTemplate(
     siteId: options.siteId,
     sourceUrl: options.sourceUrl,
     blockType: block.semanticTag ?? 'div',
+    selector: block.selector,
     htmlShell: clone.outerHTML,
     cssRules,
     slots: slotDefs,

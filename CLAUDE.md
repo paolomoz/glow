@@ -37,6 +37,8 @@ Cerebras inference (GPT-OSS-120B, GLM-4.7, GLM-4.7-Flash). Cloudflare edge deplo
 ## Build
 - Core: `tsc` (outputs to dist/core/)
 - Extension: `cd extension && npx vite build` (outputs to dist/extension/)
+  - Vite copies static files (manifest.json, panel.html, icons/) via `copy-static-files` plugin
+  - If you add new static assets, add them to this plugin in `extension/vite.config.ts`
 - Worker: `cd worker && npx wrangler deploy` (or `npx wrangler dev` for local)
 - Snippet: `cd snippet && npx vite build` (outputs dist/snippet/glow.min.js)
 
@@ -51,6 +53,11 @@ Cerebras inference (GPT-OSS-120B, GLM-4.7, GLM-4.7-Flash). Cloudflare edge deplo
 - Types: PascalCase (ContentAtom, BlockTemplate)
 - Functions: camelCase (buildPrompt, routeModel)
 - Constants: SCREAMING_SNAKE (MAX_GENERATION_TIME_MS, MIN_CONFIDENCE_THRESHOLD)
+
+## Self-Maintenance
+- When you learn something important about this project (gotchas, patterns, architecture decisions), add it to CLAUDE.md or the memory files
+- Keep CLAUDE.md minimal — use references to docs/, improvements/, or memory files for details rather than inlining long explanations here
+- Memory files: `/Users/paolo/.claude/projects/-Users-paolo-excat-glow/memory/` (persists across conversations)
 
 ## Improvement Tracking
 - Improvement opportunities are tracked in `improvements/` as markdown files, organized by area

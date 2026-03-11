@@ -4,10 +4,12 @@
 import { SignalCollector } from './signals.js';
 import { SignalBatcher } from './batcher.js';
 import { SPAObserver } from './observer.js';
+import { injectBlocks, restoreAll } from './injector.js';
 
 // ---------------------------------------------------------------------------
 // Initialization
 // ---------------------------------------------------------------------------
+console.log(`[glow] Content script loaded — build: ${__BUILD_TIMESTAMP__}`);
 
 const batcher = new SignalBatcher(location.href);
 
@@ -31,9 +33,10 @@ spaObserver.start();
 // Listen for messages from background (e.g., block injection commands)
 chrome.runtime.onMessage.addListener((message) => {
   if (message.type === 'INJECT_BLOCKS' && message.blocks) {
-    import('./injector.js').then(({ injectBlocks }) => {
-      injectBlocks(message.blocks);
-    });
+    injectBlocks(message.blocks);
+  }
+  if (message.type === 'RESTORE_ALL') {
+    restoreAll();
   }
 });
 

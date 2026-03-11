@@ -1,5 +1,12 @@
 # Indexer & Worker Improvements
 
+## Section container detection for content insertion
+- **Files**: `indexer/extractor/template-extractor.ts`, `core/types.ts`
+- **Issue**: When creating templates for `insertAfter` injection, we need to identify the site's full-width section containers. Each site uses different markup (e.g., BMW uses `div.container.responsivegrid`, other sites may use `<section>`, `div.section`, etc.)
+- **Impact**: Without knowing the section pattern, injected blocks don't match the site's layout rhythm and look out of place
+- **Fix**: During indexing, detect the site's section container pattern by analyzing the DOM hierarchy under `<main>`. Look for repeating container elements at the same depth that span full width. Store the section pattern (CSS selector) in the `ContentIndex` or `BrandProfile`. Use this when building `insertAfter` templates to ensure injected blocks sit at the correct level with correct computed styles.
+- **BMW example**: Sections are `div.container.responsivegrid` children of `main > .aem-Grid`. Each section is full-width (1752px) with spacing utilities like `style-common--cmp-spacing-top-16`
+
 ## Index endpoint is a stub
 - **File**: `worker/routes/index-route.ts`
 - **Issue**: Returns `"pending_implementation"` — Worker can't trigger indexing

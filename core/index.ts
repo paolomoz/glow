@@ -54,6 +54,10 @@ export type { ValidationResult } from './skills/validator.js';
 export type { ExternalSkillLoader } from './skills/hot-loader.js';
 export { SkillHotLoader, KVSkillLoader } from './skills/hot-loader.js';
 
+// Conversation parser
+export type { ChatGPTConversation, ChatGPTExport, ParsedMessage } from './conversation/parser.js';
+export { parseConversation, conversationToSignals, parseExport } from './conversation/parser.js';
+
 // Analytics
 export type { EngagementTracker } from './analytics/tracker.js';
 export { DefaultEngagementTracker } from './analytics/tracker.js';

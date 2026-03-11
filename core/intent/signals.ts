@@ -163,6 +163,10 @@ export class DefaultSignalAggregator implements SignalAggregator {
           sectionTimes[section] = (sectionTimes[section] ?? 0) + (data.durationMs ?? 0);
           break;
         }
+        case 'filter_select': {
+          comparisonClicks++;
+          break;
+        }
         case 'navigation': {
           const data = signal.data as unknown as NavigationData;
           navSequence.push(data.to);

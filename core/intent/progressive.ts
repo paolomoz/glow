@@ -33,7 +33,7 @@ export function getMaxBlocksForLevel(level: PersonalizationLevel): number {
     case 'subtle':
       return 1;
     case 'moderate':
-      return 2;
+      return 3;
     case 'full':
       return 5;
   }

@@ -48,7 +48,7 @@ interface ChatCompletionResponse {
   model: string;
   choices: {
     index: number;
-    message: { role: string; content: string };
+    message: { role: string; content?: string; reasoning?: string };
     finish_reason: string;
   }[];
   usage: {
@@ -125,7 +125,9 @@ export class DefaultCerebrasClient implements CerebrasClient {
       const data: ChatCompletionResponse = await response.json();
       const latencyMs = Date.now() - startTime;
 
-      const content = data.choices?.[0]?.message?.content ?? '';
+      // Some models (e.g., gpt-oss-120b) return output in `reasoning` instead of `content`
+      const msg = data.choices?.[0]?.message;
+      const content = msg?.content || msg?.reasoning || '';
 
       return {
         content,

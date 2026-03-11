@@ -109,6 +109,7 @@ describe('Core Types', () => {
       archetype: 'explore',
       confidence: 0.45,
       topicEmbedding: [0.1, 0.2, 0.3],
+      topics: [],
       audienceMode: 'novice',
       contentDepth: 'overview',
       emotionalRegister: 'rational',
@@ -176,7 +177,7 @@ describe('Progressive Personalization', () => {
   it('should return correct max blocks per level', () => {
     expect(getMaxBlocksForLevel('none')).toBe(0);
     expect(getMaxBlocksForLevel('subtle')).toBe(1);
-    expect(getMaxBlocksForLevel('moderate')).toBe(2);
+    expect(getMaxBlocksForLevel('moderate')).toBe(3);
     expect(getMaxBlocksForLevel('full')).toBe(5);
   });
 });

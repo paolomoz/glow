@@ -66,6 +66,11 @@ export class SessionManager {
     this.sessions.delete(tabId);
   }
 
+  /** Clear all sessions. */
+  clearAll(): void {
+    this.sessions.clear();
+  }
+
   /** Clean up expired sessions. */
   cleanExpired(): void {
     for (const [tabId, session] of this.sessions) {

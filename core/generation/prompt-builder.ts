@@ -182,13 +182,17 @@ const TASK_SYSTEM_INSTRUCTIONS: Record<GenerationTask, string> = {
 // ---------------------------------------------------------------------------
 
 function describeIntent(intent: IntentVector): string {
-  return [
+  const lines = [
     `Archetype: ${intent.archetype} (confidence: ${intent.confidence.toFixed(2)})`,
     `Content depth: ${intent.contentDepth}`,
     `Audience: ${intent.audienceMode}`,
     `Emotional register: ${intent.emotionalRegister}`,
     `Signals processed: ${intent.signalCount}`,
-  ].join('\n');
+  ];
+  if (intent.topics.length > 0) {
+    lines.push(`User interests: ${intent.topics.slice(0, 15).join(', ')}`);
+  }
+  return lines.join('\n');
 }
 
 function formatAtoms(atoms: ContentAtom[]): string {
@@ -203,9 +207,14 @@ function formatAtoms(atoms: ContentAtom[]): string {
 function formatSlots(slots: SlotDefinition[]): string {
   return slots
     .map(
-      (s) =>
-        `- ${s.name} (${s.type}): ${s.constraints.required ? 'required' : 'optional'}, ` +
-        `${s.constraints.minLength ?? 0}-${s.constraints.maxLength ?? '∞'} chars`,
+      (s) => {
+        let desc = `- ${s.name} (${s.type}): ${s.constraints.required ? 'required' : 'optional'}, ` +
+          `${s.constraints.minLength ?? 0}-${s.constraints.maxLength ?? '∞'} chars`;
+        if (s.type === 'image') {
+          desc += `. Value must be an image URL from the source atoms.`;
+        }
+        return desc;
+      },
     )
     .join('\n');
 }

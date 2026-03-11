@@ -66,6 +66,7 @@ export interface BlockGeneratedMessage {
   type: 'BLOCK_GENERATED';
   block: BlockReplacement;
   pageUrl: string;
+  source: GenerationSource;
 }
 
 export interface SetApiKeyMessage {
@@ -86,6 +87,19 @@ export interface ImportIndexMessage {
   type: 'IMPORT_INDEX';
   index: ContentIndex;
 }
+
+export interface GenerateMessage {
+  type: 'GENERATE';
+  source: GenerationSource;
+  tabId?: number;
+}
+
+export interface ClearAllMessage {
+  type: 'CLEAR_ALL';
+  tabId?: number;
+}
+
+export type GenerationSource = 'signals' | 'chatgpt';
 
 export interface IndexStatusResponse {
   indexed: boolean;
@@ -112,7 +126,9 @@ export type ExtensionMessage =
   | SetApiKeyMessage
   | GetApiKeyMessage
   | GetIndexStatusMessage
-  | ImportIndexMessage;
+  | ImportIndexMessage
+  | GenerateMessage
+  | ClearAllMessage;
 
 /** Icon state for the extension action badge. */
 export type IconState = 'inactive' | 'indexing' | 'active' | 'generating';

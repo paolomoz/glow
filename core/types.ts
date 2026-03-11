@@ -86,6 +86,8 @@ export interface SlotDefinition {
   type: SlotType;
   constraints: SlotConstraints;
   originalContent: string;
+  /** CSS selector relative to the block container for in-place text replacement. */
+  cssSelector?: string;
 }
 
 export interface ResponsiveStyles {
@@ -99,13 +101,17 @@ export interface BlockTemplate {
   siteId: string;
   sourceUrl: string;
   blockType: string;
-  /** CSS selector for the page element this template replaces. */
+  /** CSS selector for the page element this template replaces (or inserts relative to). */
   selector: string;
   htmlShell: string;
   cssRules: string;
   slots: SlotDefinition[];
   responsive: ResponsiveStyles;
   position: BlockPosition;
+  /** If set, insert new content after the selector instead of modifying it. */
+  insertAfter?: boolean;
+  /** If set, template is only used when intent topics overlap with these. */
+  requiredTopics?: string[];
 }
 
 // =============================================================================
@@ -181,6 +187,8 @@ export interface IntentVector {
   archetype: IntentArchetype;
   confidence: number;
   topicEmbedding: number[];
+  /** Topic keywords extracted from signals (search queries, ChatGPT conversations). */
+  topics: string[];
   audienceMode: AudienceDepth;
   contentDepth: ContentDepth;
   emotionalRegister: EmotionalRegister;
@@ -428,6 +436,14 @@ export interface BlockReplacement {
   generationTimeMs: number;
   model: GenerationModel;
   confidence: number;
+  /** Slot values for in-place text replacement (preserves original markup). */
+  slotValues?: Record<string, string>;
+  /** CSS selectors for each slot, relative to the block container. */
+  slotSelectors?: Record<string, string>;
+  /** If true, insert new content after the selector instead of modifying it. */
+  insertAfter?: boolean;
+  /** Source that triggered generation: implicit signals or chatgpt conversation. */
+  source?: 'signals' | 'chatgpt';
 }
 
 export interface PipelineResult {

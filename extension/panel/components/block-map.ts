@@ -7,6 +7,7 @@ export interface BlockEntry {
   block: BlockReplacement;
   pageUrl: string;
   timestamp: number;
+  source?: 'signals' | 'chatgpt';
 }
 
 /** Render the block list showing generated blocks. */
@@ -27,9 +28,12 @@ export function renderBlockList(
 
     const timeMs = entry.block.generationTimeMs;
     const confidence = Math.round(entry.block.confidence * 100);
+    const source = entry.source ?? entry.block.source ?? 'signals';
+    const sourceBadge = `<span class="source-badge ${source}">${source}</span>`;
 
     item.innerHTML = `
       <span class="block-indicator generated"></span>
+      ${sourceBadge}
       <span>${entry.block.templateId}</span>
       <span class="block-meta">${entry.block.model} · ${timeMs}ms · ${confidence}%</span>
     `;
@@ -72,6 +76,7 @@ function showBlockInspector(
       <dt>Gen Time</dt><dd>${b.generationTimeMs}ms</dd>
       <dt>Confidence</dt><dd>${Math.round(b.confidence * 100)}%</dd>
       <dt>Atoms Used</dt><dd>${b.atomIds.length} atoms</dd>
+      <dt>Source</dt><dd><span class="source-badge ${entry.source ?? 'signals'}">${entry.source ?? 'signals'}</span></dd>
       <dt>Page</dt><dd>${entry.pageUrl}</dd>
     </dl>
     ${b.atomIds.length > 0 ? `

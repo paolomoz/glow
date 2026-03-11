@@ -94,7 +94,7 @@ export class IndexedDBStorageAdapter implements StorageInterface {
   async queryAtoms(
     siteId: string,
     _embedding: number[],
-    _filters: Partial<ContentMetadata>,
+    filters: Partial<ContentMetadata>,
     limit: number,
   ): Promise<ContentAtom[]> {
     const db = await this.getDB();
@@ -127,7 +127,20 @@ export class IndexedDBStorageAdapter implements StorageInterface {
             .map((r) => r.atom);
         }
 
-        resolve(atoms.slice(0, limit));
+        // Apply metadata filters — boost matching atoms to the front
+        // Uses substring matching to connect intent topics (e.g., "german") with
+        // atom topics (e.g., "german-engineering")
+        if (filters.topics && (filters.topics as unknown as string[]).length > 0) {
+          const filterTopics = (filters.topics as unknown as string[]).map((t) => t.toLowerCase());
+          atoms.sort((a, b) => {
+            const aCount = countTopicMatches(a.metadata.topics, filterTopics);
+            const bCount = countTopicMatches(b.metadata.topics, filterTopics);
+            return bCount - aCount; // More matches = higher rank
+          });
+        }
+
+        // Return more atoms than requested so the atom selector can rank them
+        resolve(atoms.slice(0, Math.max(limit, 50)));
       };
 
       request.onerror = () => reject(request.error);
@@ -348,6 +361,20 @@ export class IndexedDBStorageAdapter implements StorageInterface {
     });
   }
 
+  /** Clear all stored data (atoms, templates, profiles). */
+  async clear(): Promise<void> {
+    const db = await this.getDB();
+    const storeNames = [ATOMS_STORE, TEMPLATES_STORE, PROFILES_STORE];
+    return new Promise((resolve, reject) => {
+      const tx = db.transaction(storeNames, 'readwrite');
+      for (const name of storeNames) {
+        tx.objectStore(name).clear();
+      }
+      tx.oncomplete = () => resolve();
+      tx.onerror = () => reject(tx.error);
+    });
+  }
+
   /** Clear all data for a site. */
   async clearSite(siteId: string): Promise<void> {
     const db = await this.getDB();
@@ -379,6 +406,21 @@ export class IndexedDBStorageAdapter implements StorageInterface {
 // ---------------------------------------------------------------------------
 // Helpers
 // ---------------------------------------------------------------------------
+
+/** Count how many atom topics match intent topics (substring matching). */
+function countTopicMatches(atomTopics: string[], intentTopics: string[]): number {
+  let matches = 0;
+  for (const at of atomTopics) {
+    const atLow = at.toLowerCase();
+    for (const it of intentTopics) {
+      if (atLow === it || atLow.includes(it) || it.includes(atLow)) {
+        matches++;
+        break;
+      }
+    }
+  }
+  return matches;
+}
 
 function cosineSim(a: number[], b: number[]): number {
   if (a.length !== b.length || a.length === 0) return 0;

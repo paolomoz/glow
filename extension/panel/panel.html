@@ -120,6 +120,113 @@
       border: 1px solid var(--glow-border);
     }
 
+    /* Clear button */
+    .btn-clear {
+      width: 22px;
+      height: 22px;
+      border-radius: 4px;
+      border: 1px solid var(--glow-border);
+      background: transparent;
+      color: var(--glow-muted);
+      cursor: pointer;
+      font-size: 11px;
+      line-height: 1;
+      padding: 0;
+      transition: color 150ms, border-color 150ms, background 150ms;
+    }
+
+    .btn-clear:hover {
+      color: var(--glow-red);
+      border-color: var(--glow-red);
+      background: rgba(239, 68, 68, 0.1);
+    }
+
+    /* Generate buttons */
+    .generate-buttons {
+      display: flex;
+      gap: 8px;
+    }
+
+    .btn-generate {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 12px;
+      border-radius: 8px;
+      border: 1px solid var(--glow-border);
+      background: var(--glow-surface);
+      color: var(--glow-text);
+      cursor: pointer;
+      text-align: left;
+      transition: border-color 200ms, background 200ms, opacity 200ms;
+    }
+
+    .btn-generate:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+
+    .btn-generate:not(:disabled):hover {
+      border-color: var(--glow-accent);
+      background: rgba(139, 92, 246, 0.08);
+    }
+
+    .btn-generate .btn-icon {
+      font-size: 20px;
+      line-height: 1;
+    }
+
+    .btn-generate .btn-label {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+    }
+
+    .btn-generate .btn-title {
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .btn-generate .btn-desc {
+      font-size: 10px;
+      color: var(--glow-muted);
+    }
+
+    .btn-signals:not(:disabled) {
+      border-color: rgba(139, 92, 246, 0.3);
+    }
+
+    .btn-chatgpt:not(:disabled) {
+      border-color: rgba(16, 163, 127, 0.3);
+    }
+
+    .btn-chatgpt:not(:disabled):hover {
+      border-color: #10a37f;
+      background: rgba(16, 163, 127, 0.08);
+    }
+
+    /* Block source badges */
+    .source-badge {
+      display: inline-block;
+      padding: 1px 5px;
+      border-radius: 3px;
+      font-size: 9px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+
+    .source-badge.signals {
+      background: rgba(139, 92, 246, 0.15);
+      color: var(--glow-accent);
+    }
+
+    .source-badge.chatgpt {
+      background: rgba(16, 163, 127, 0.15);
+      color: #10a37f;
+    }
+
     /* Intent Meter */
     .intent-meter {
       display: flex;
@@ -300,6 +407,7 @@
     <span class="logo">✦</span>
     <h1>Glow</h1>
     <span class="status" id="status-badge">Inactive</span>
+    <button class="btn-clear" id="clear-btn" title="Clear all — restore page and reset state">✕</button>
   </div>
 
   <!-- API Key -->
@@ -317,6 +425,28 @@
     <div id="intent-content">
       <div class="empty-state">Waiting for signals...</div>
     </div>
+  </div>
+
+  <!-- Generate -->
+  <div class="section" id="generate-section">
+    <div class="section-title">Generate</div>
+    <div class="generate-buttons">
+      <button class="btn btn-generate btn-signals" id="generate-signals-btn" disabled>
+        <span class="btn-icon">✦</span>
+        <span class="btn-label">
+          <span class="btn-title">From Signals</span>
+          <span class="btn-desc" id="signal-count-label">No signals yet</span>
+        </span>
+      </button>
+      <button class="btn btn-generate btn-chatgpt" id="generate-chatgpt-btn" disabled>
+        <span class="btn-icon">💬</span>
+        <span class="btn-label">
+          <span class="btn-title">From ChatGPT</span>
+          <span class="btn-desc" id="chatgpt-count-label">Import a conversation first</span>
+        </span>
+      </button>
+    </div>
+    <div id="generate-status" style="font-size: 11px; color: var(--glow-muted); margin-top: 6px;"></div>
   </div>
 
   <!-- Signal Log -->
@@ -354,6 +484,17 @@
       <button class="btn btn-secondary" id="import-btn">Import Index JSON</button>
       <span id="import-status" style="font-size: 11px; color: var(--glow-muted); margin-left: 8px;"></span>
     </div>
+  </div>
+
+  <!-- ChatGPT Import -->
+  <div class="section" id="chatgpt-section">
+    <div class="section-title">ChatGPT Import</div>
+    <div style="font-size: 12px; color: var(--glow-muted); margin-bottom: 8px;">
+      Import a ChatGPT conversation to seed intent signals
+    </div>
+    <input type="file" id="chatgpt-file" accept=".json" style="display: none;" />
+    <button class="btn btn-secondary" id="chatgpt-btn">Import conversations.json</button>
+    <span id="chatgpt-status" style="font-size: 11px; color: var(--glow-muted); margin-left: 8px;"></span>
   </div>
 
   <script type="module" src="panel.js"></script>

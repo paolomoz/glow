@@ -44,6 +44,7 @@ function makeIntent(overrides: Partial<IntentVector> = {}): IntentVector {
     archetype: 'explore',
     confidence: 0.7,
     topicEmbedding: [],
+    topics: [],
     audienceMode: 'novice',
     contentDepth: 'overview',
     emotionalRegister: 'rational',

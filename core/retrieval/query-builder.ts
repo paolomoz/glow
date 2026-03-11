@@ -68,6 +68,11 @@ export class DefaultQueryBuilder implements QueryBuilder {
     // Filter by emotional register
     metadataFilters.emotionalRegister = intent.emotionalRegister;
 
+    // Pass intent topics as metadata filter for topic-based sorting in storage
+    if (intent.topics.length > 0) {
+      (metadataFilters as any).topics = intent.topics;
+    }
+
     // Adjust limit based on confidence — higher confidence = more results to rank
     const limit = intent.confidence > 0.8
       ? this.defaultLimit * 2

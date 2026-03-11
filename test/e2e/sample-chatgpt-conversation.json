@@ -1,0 +1,158 @@
+[
+  {
+    "title": "TestBrand Pricing and Plans",
+    "create_time": 1700000000,
+    "update_time": 1700000600,
+    "conversation_id": "conv-pricing-123",
+    "current_node": "msg-9",
+    "default_model_slug": "gpt-4o",
+    "mapping": {
+      "root": {
+        "id": "root",
+        "message": null,
+        "parent": null,
+        "children": ["msg-0"]
+      },
+      "msg-0": {
+        "id": "msg-0",
+        "message": {
+          "id": "msg-0",
+          "author": { "role": "user" },
+          "create_time": 1700000000,
+          "content": {
+            "content_type": "text",
+            "parts": ["I'm looking at TestBrand for my team. How much does the enterprise plan cost?"]
+          }
+        },
+        "parent": "root",
+        "children": ["msg-1"]
+      },
+      "msg-1": {
+        "id": "msg-1",
+        "message": {
+          "id": "msg-1",
+          "author": { "role": "assistant" },
+          "create_time": 1700000060,
+          "content": {
+            "content_type": "text",
+            "parts": ["TestBrand offers several pricing tiers. The Enterprise plan starts at $99/user/month with volume discounts available for larger teams."]
+          }
+        },
+        "parent": "msg-0",
+        "children": ["msg-2"]
+      },
+      "msg-2": {
+        "id": "msg-2",
+        "message": {
+          "id": "msg-2",
+          "author": { "role": "user" },
+          "create_time": 1700000120,
+          "content": {
+            "content_type": "text",
+            "parts": ["Can you compare the Pro and Enterprise plans? What are the differences?"]
+          }
+        },
+        "parent": "msg-1",
+        "children": ["msg-3"]
+      },
+      "msg-3": {
+        "id": "msg-3",
+        "message": {
+          "id": "msg-3",
+          "author": { "role": "assistant" },
+          "create_time": 1700000180,
+          "content": {
+            "content_type": "text",
+            "parts": ["Here's a comparison:\n\n**Pro Plan** ($49/user/mo):\n- 10GB storage\n- Basic analytics\n- Email support\n\n**Enterprise Plan** ($99/user/mo):\n- Unlimited storage\n- Advanced analytics & reporting\n- Dedicated account manager\n- SSO & SAML\n- Custom integrations\n- 99.99% SLA"]
+          }
+        },
+        "parent": "msg-2",
+        "children": ["msg-4"]
+      },
+      "msg-4": {
+        "id": "msg-4",
+        "message": {
+          "id": "msg-4",
+          "author": { "role": "user" },
+          "create_time": 1700000240,
+          "content": {
+            "content_type": "text",
+            "parts": ["Which plan is better for a team of 50? We need SOC2 compliance and SSO."]
+          }
+        },
+        "parent": "msg-3",
+        "children": ["msg-5"]
+      },
+      "msg-5": {
+        "id": "msg-5",
+        "message": {
+          "id": "msg-5",
+          "author": { "role": "assistant" },
+          "create_time": 1700000300,
+          "content": {
+            "content_type": "text",
+            "parts": ["For a team of 50 with SOC2 and SSO requirements, the Enterprise plan is the clear choice. Those security features are only available on Enterprise."]
+          }
+        },
+        "parent": "msg-4",
+        "children": ["msg-6"]
+      },
+      "msg-6": {
+        "id": "msg-6",
+        "message": {
+          "id": "msg-6",
+          "author": { "role": "user" },
+          "create_time": 1700000360,
+          "content": {
+            "content_type": "text",
+            "parts": ["Great, I want to sign up for the Enterprise trial. How do I get started?"]
+          }
+        },
+        "parent": "msg-5",
+        "children": ["msg-7"]
+      },
+      "msg-7": {
+        "id": "msg-7",
+        "message": {
+          "id": "msg-7",
+          "author": { "role": "assistant" },
+          "create_time": 1700000420,
+          "content": {
+            "content_type": "text",
+            "parts": ["You can start a 14-day free trial at https://testbrand.com/get-started. Click 'Get Started' and select the Enterprise plan."]
+          }
+        },
+        "parent": "msg-6",
+        "children": ["msg-8"]
+      },
+      "msg-8": {
+        "id": "msg-8",
+        "message": {
+          "id": "msg-8",
+          "author": { "role": "user" },
+          "create_time": 1700000480,
+          "content": {
+            "content_type": "text",
+            "parts": ["Can I schedule a demo with your sales team first? I want to see how the API integrates with our existing tools before committing."]
+          }
+        },
+        "parent": "msg-7",
+        "children": ["msg-9"]
+      },
+      "msg-9": {
+        "id": "msg-9",
+        "message": {
+          "id": "msg-9",
+          "author": { "role": "assistant" },
+          "create_time": 1700000540,
+          "content": {
+            "content_type": "text",
+            "parts": ["Absolutely! You can book a demo at https://testbrand.com/demo. The sales team can walk you through the API integration process."]
+          }
+        },
+        "parent": "msg-8",
+        "children": []
+      }
+    }
+  }
+]

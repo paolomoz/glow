@@ -43,7 +43,11 @@ export class DefaultIntentEngine implements IntentEngine {
   private normalizer = new DefaultSignalNormalizer();
   private aggregator = new DefaultSignalAggregator();
 
+  /** Stash raw signals for topic extraction (not persisted). */
+  private pendingSignals: Signal[] = [];
+
   ingestSignals(currentIntent: IntentVector | null, signals: Signal[]): IntentVector {
+    this.pendingSignals = signals;
     const batched = this.normalizer.batch(signals);
     const aggregated = this.aggregator.aggregate(batched);
     const sessionId = currentIntent?.sessionId ?? generateSessionId();
@@ -124,11 +128,15 @@ export class DefaultIntentEngine implements IntentEngine {
       history.splice(0, history.length - 20);
     }
 
+    // 8. Extract topic keywords from search queries and other signals
+    const topics = extractTopicsFromSignals(this.pendingSignals, currentIntent?.topics ?? []);
+
     return {
       sessionId,
       archetype: bestArchetype,
       confidence,
       topicEmbedding: currentIntent?.topicEmbedding ?? [],
+      topics,
       audienceMode,
       contentDepth,
       emotionalRegister,
@@ -258,4 +266,62 @@ function clamp(value: number, min: number, max: number): number {
 
 function generateSessionId(): string {
   return `sess_${Date.now().toString(36)}_${Math.random().toString(36).slice(2, 8)}`;
+}
+
+// Stop words to exclude from topic extraction
+const STOP_WORDS = new Set([
+  'the', 'a', 'an', 'is', 'are', 'was', 'were', 'be', 'been', 'being',
+  'have', 'has', 'had', 'do', 'does', 'did', 'will', 'would', 'could',
+  'should', 'may', 'might', 'can', 'shall', 'to', 'of', 'in', 'for',
+  'on', 'with', 'at', 'by', 'from', 'as', 'into', 'through', 'about',
+  'that', 'this', 'it', 'its', 'and', 'or', 'but', 'not', 'no', 'if',
+  'so', 'than', 'too', 'very', 'just', 'also', 'more', 'how', 'what',
+  'when', 'where', 'which', 'who', 'why', 'all', 'each', 'every',
+  'both', 'few', 'some', 'any', 'most', 'other', 'new', 'old', 'get',
+  'want', 'here', 'there', 'me', 'my', 'i', 'you', 'your', 'we',
+  'our', 'they', 'them', 'their', 'he', 'she', 'him', 'her',
+]);
+
+/**
+ * Extract topic keywords from raw signals (especially search_query from ChatGPT).
+ * Merges with existing topics, deduplicates.
+ */
+function extractTopicsFromSignals(signals: Signal[], existingTopics: string[]): string[] {
+  const topicSet = new Set(existingTopics.map((t) => t.toLowerCase()));
+
+  for (const signal of signals) {
+    if (signal.type === 'search_query') {
+      const query = String(signal.data.query ?? '');
+      // Extract meaningful words (3+ chars, not stop words)
+      const words = query
+        .toLowerCase()
+        .replace(/[^a-z0-9\s-]/g, ' ')
+        .split(/\s+/)
+        .filter((w) => w.length >= 3 && !STOP_WORDS.has(w));
+      for (const word of words) {
+        topicSet.add(word);
+      }
+
+      // Also extract multi-word phrases (bigrams)
+      for (let i = 0; i < words.length - 1; i++) {
+        topicSet.add(`${words[i]}-${words[i + 1]}`);
+      }
+    }
+
+    if (signal.type === 'click_target') {
+      const text = String(signal.data.text ?? '');
+      const context = String(signal.data.context ?? '');
+      const combined = `${text} ${context}`.toLowerCase();
+      const words = combined
+        .replace(/[^a-z0-9\s-]/g, ' ')
+        .split(/\s+/)
+        .filter((w) => w.length >= 3 && !STOP_WORDS.has(w));
+      for (const word of words) {
+        topicSet.add(word);
+      }
+    }
+  }
+
+  // Keep top 30 topics max
+  return [...topicSet].slice(0, 30);
 }

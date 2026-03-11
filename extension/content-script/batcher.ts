@@ -53,14 +53,7 @@ export class SignalBatcher {
           // Extension context invalidated — stop collecting
           return;
         }
-
-        // If background returns blocks, inject them
-        if (response?.type === 'INJECT_BLOCKS' && response.blocks?.length > 0) {
-          // Dynamic import to avoid circular dependency
-          import('./injector.js').then(({ injectBlocks }) => {
-            injectBlocks(response.blocks);
-          });
-        }
+        // Signal batch acknowledged — blocks are only generated on explicit GENERATE
       },
     );
   }

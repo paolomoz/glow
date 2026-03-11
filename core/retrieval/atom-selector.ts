@@ -68,11 +68,32 @@ export class DefaultAtomSelector implements AtomSelector {
     const freshness = this.computeFreshness(atom);
     const performanceHistory = this.computePerformance(atom);
 
-    const score =
+    let score =
       this.weights.semanticSimilarity * semanticSimilarity +
       this.weights.intentAlignment * intentAlignment +
       this.weights.freshness * freshness +
       this.weights.performanceHistory * performanceHistory;
+
+    // Boost atoms whose topics overlap with intent topics
+    if (intent.topics.length > 0 && atom.metadata.topics.length > 0) {
+      const intentTopics = new Set(intent.topics.map((t) => t.toLowerCase()));
+      const atomTopics = atom.metadata.topics.map((t) => t.toLowerCase());
+      let matches = 0;
+      for (const at of atomTopics) {
+        // Exact match or substring match against intent topics
+        for (const it of intentTopics) {
+          if (at === it || at.includes(it) || it.includes(at)) {
+            matches++;
+            break;
+          }
+        }
+      }
+      if (matches > 0) {
+        // Strong boost proportional to topic overlap
+        const topicBoost = Math.min(1, matches / atomTopics.length);
+        score += topicBoost * 0.5;
+      }
+    }
 
     return {
       atom,

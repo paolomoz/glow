@@ -122,7 +122,7 @@ export class DefaultCerebrasClient implements CerebrasClient {
         );
       }
 
-      const data: ChatCompletionResponse = await response.json();
+      const data = (await response.json()) as ChatCompletionResponse;
       const latencyMs = Date.now() - startTime;
 
       // Some models (e.g., gpt-oss-120b) return output in `reasoning` instead of `content`

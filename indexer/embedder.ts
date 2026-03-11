@@ -117,7 +117,7 @@ async function embedBatch(
       );
     }
 
-    const data: EmbeddingApiResponse = await response.json();
+    const data = (await response.json()) as EmbeddingApiResponse;
 
     return data.data.map((item) => ({
       chunkId: chunks[item.index].id,

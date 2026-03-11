@@ -23,6 +23,7 @@
     "clean": "rm -rf dist core/dist indexer/dist extension/dist worker/dist snippet/dist"
   },
   "devDependencies": {
+    "@types/jsdom": "^28.0.0",
     "@types/node": "^22.0.0",
     "jsdom": "^28.1.0",
     "puppeteer": "^24.38.0",

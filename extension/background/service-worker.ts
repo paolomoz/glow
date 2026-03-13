@@ -152,6 +152,9 @@ const tabPageUrls = new Map<number, string>();
 /** Track the generation source for chatgpt signals per tab. */
 const tabHasChatGptSignals = new Map<number, boolean>();
 
+/** Track the generation source for LLMO signals per tab. */
+const tabHasLLMOSignals = new Map<number, boolean>();
+
 /** Track accumulated intent per tab (separate from orchestrator). */
 const tabIntents = new Map<number, import('@glow/core').IntentVector>();
 
@@ -171,6 +174,12 @@ async function handleSignalBatch(
   const hasChatGpt = msg.signals.some((s) => (s.data as any).source === 'chatgpt');
   if (hasChatGpt) {
     tabHasChatGptSignals.set(tabId, true);
+  }
+
+  // Track if LLMO signals have been ingested
+  const hasLLMO = msg.signals.some((s) => (s.data as any).source === 'llmo');
+  if (hasLLMO) {
+    tabHasLLMOSignals.set(tabId, true);
   }
 
   if (!orchestrator) {
@@ -296,6 +305,7 @@ async function handleClearAll(tabId: number): Promise<void> {
   tabIntents.delete(tabId);
   tabPageUrls.delete(tabId);
   tabHasChatGptSignals.delete(tabId);
+  tabHasLLMOSignals.delete(tabId);
   processingTabs.delete(tabId);
 
   // Clear session

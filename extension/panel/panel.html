@@ -206,6 +206,15 @@
       background: rgba(16, 163, 127, 0.08);
     }
 
+    .btn-llmo:not(:disabled) {
+      border-color: rgba(245, 158, 11, 0.3);
+    }
+
+    .btn-llmo:not(:disabled):hover {
+      border-color: #f59e0b;
+      background: rgba(245, 158, 11, 0.08);
+    }
+
     /* Block source badges */
     .source-badge {
       display: inline-block;
@@ -225,6 +234,28 @@
     .source-badge.chatgpt {
       background: rgba(16, 163, 127, 0.15);
       color: #10a37f;
+    }
+
+    .source-badge.llmo {
+      background: rgba(245, 158, 11, 0.15);
+      color: #f59e0b;
+    }
+
+    /* LLMO prompt selector */
+    .llmo-prompt-select {
+      width: 100%;
+      background: var(--glow-surface);
+      border: 1px solid var(--glow-border);
+      border-radius: 6px;
+      padding: 6px 10px;
+      color: var(--glow-text);
+      font-size: 12px;
+      outline: none;
+      margin-top: 8px;
+    }
+
+    .llmo-prompt-select:focus {
+      border-color: var(--glow-amber);
     }
 
     /* Intent Meter */
@@ -445,7 +476,17 @@
           <span class="btn-desc" id="chatgpt-count-label">Import a conversation first</span>
         </span>
       </button>
+      <button class="btn btn-generate btn-llmo" id="generate-llmo-btn" disabled>
+        <span class="btn-icon">🔍</span>
+        <span class="btn-label">
+          <span class="btn-title">From LLMO</span>
+          <span class="btn-desc" id="llmo-count-label">Import prompts first</span>
+        </span>
+      </button>
     </div>
+    <select class="llmo-prompt-select" id="llmo-prompt-select" style="display: none;">
+      <option value="">Select an LLMO prompt...</option>
+    </select>
     <div id="generate-status" style="font-size: 11px; color: var(--glow-muted); margin-top: 6px;"></div>
   </div>
 
@@ -495,6 +536,17 @@
     <input type="file" id="chatgpt-file" accept=".json" style="display: none;" />
     <button class="btn btn-secondary" id="chatgpt-btn">Import conversations.json</button>
     <span id="chatgpt-status" style="font-size: 11px; color: var(--glow-muted); margin-left: 8px;"></span>
+  </div>
+
+  <!-- LLMO Import -->
+  <div class="section" id="llmo-section">
+    <div class="section-title">LLMO Prompts</div>
+    <div style="font-size: 12px; color: var(--glow-muted); margin-bottom: 8px;">
+      Import verified ChatGPT prompts from LLMO analysis
+    </div>
+    <input type="file" id="llmo-file" accept=".json" style="display: none;" />
+    <button class="btn btn-secondary" id="llmo-import-btn">Import LLMO prompts JSON</button>
+    <span id="llmo-status" style="font-size: 11px; color: var(--glow-muted); margin-left: 8px;"></span>
   </div>
 
   <script type="module" src="panel.js"></script>

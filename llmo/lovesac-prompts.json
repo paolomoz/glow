@@ -1,0 +1,812 @@
+[
+  {
+    "prompt": "Couch with hidden speakers for home theater",
+    "topic": "Home theater sound and charging systems",
+    "category": "Premium Modular Furniture",
+    "intent": "informational",
+    "type": "unbranded",
+    "url": "https://www.lovesac.com/sactionals-with-stealthtech-sound-charge",
+    "referral": "referred"
+  },
+  {
+    "prompt": "Modular sectionals with built-in wireless chargers vs traditional sofas",
+    "topic": "Home theater sound and charging systems",
+    "category": "Premium Modular Furniture",
+    "intent": "comparative",
+    "type": "unbranded",
+    "url": "https://www.lovesac.com/sactionals-with-stealthtech-sound-charge",
+    "referral": "referred"
+  },
+  {
+    "prompt": "Lovesac stealthtech sectional vs regular sectional benefits",
+    "topic": "Home theater sound and charging systems",
+    "category": "Premium Modular Furniture",
+    "intent": "comparative",
+    "type": "branded",
+    "url": "https://www.lovesac.com/sactionals-with-stealthtech-sound-charge",
+    "referral": "referred"
+  },
+  {
+    "prompt": "Sectional with built-in speakers and wireless charging price",
+    "topic": "Home theater sound and charging systems",
+    "category": "Premium Modular Furniture",
+    "intent": "transactional",
+    "type": "unbranded",
+    "url": "https://www.lovesac.com/sactionals-with-stealthtech-sound-charge",
+    "referral": "referred"
+  },
+  {
+    "prompt": "Lovesac sofa with sound and wireless charging price",
+    "topic": "Home theater sound and charging systems",
+    "category": "Premium Modular Furniture",
+    "intent": "transactional",
+    "type": "branded",
+    "url": "https://www.lovesac.com/sactionals-with-stealthtech-sound-charge",
+    "referral": "referred"
+  },
+  {
+    "prompt": "Price for modular sectionals with invisible speakers",
+    "topic": "Home theater sound and charging systems",
+    "category": "Premium Modular Furniture",
+    "intent": "transactional",
+    "type": "unbranded",
+    "url": "https://www.lovesac.com/sactionals-with-stealthtech-sound-charge",
+    "referral": "referred"
+  },
+  {
+    "prompt": "Steps to update firmware on a sound system couch",
+    "topic": "Home theater sound and charging systems",
+    "category": "Lovesac Accessories and Instructions",
+    "intent": "instructional",
+    "type": "unbranded",
+    "url": "https://www.lovesac.com/stealthtech-firmware-updates",
+    "referral": "referred"
+  },
+  {
+    "prompt": "Risks of skipping couch speaker firmware update",
+    "topic": "Home theater sound and charging systems",
+    "category": "Lovesac Accessories and Instructions",
+    "intent": "informational",
+    "type": "unbranded",
+    "url": "https://www.lovesac.com/stealthtech-firmware-updates",
+    "referral": "referred"
+  },
+  {
+    "prompt": "Update Lovesac firmware guide",
+    "topic": "Home theater sound and charging systems",
+    "category": "Lovesac Accessories and Instructions",
+    "intent": "instructional",
+    "type": "branded",
+    "url": "https://www.lovesac.com/stealthtech-firmware-updates",
+    "referral": "referred"
+  },
+  {
+    "prompt": "Check firmware version my Lovesac system is running",
+    "topic": "Home theater sound and charging systems",
+    "category": "Lovesac Accessories and Instructions",
+    "intent": "informational",
+    "type": "branded",
+    "url": "https://www.lovesac.com/stealthtech-firmware-updates",
+    "referral": "referred"
+  },
+  {
+    "prompt": "StealthTech firmware affect on sound quality",
+    "topic": "Home theater sound and charging systems",
+    "category": "Lovesac Accessories and Instructions",
+    "intent": "informational",
+    "type": "branded",
+    "url": "https://www.lovesac.com/stealthtech-firmware-updates",
+    "referral": "referred"
+  },
+  {
+    "prompt": "When should I update my Lovesac firmware?",
+    "topic": "Home theater sound and charging systems",
+    "category": "Lovesac Accessories and Instructions",
+    "intent": "planning",
+    "type": "branded",
+    "url": "https://www.lovesac.com/stealthtech-firmware-updates",
+    "referral": "referred"
+  },
+  {
+    "prompt": "How do I set up sofa speakers at home?",
+    "topic": "Home theater sound and charging systems",
+    "category": "Lovesac Accessories and Instructions",
+    "intent": "instructional",
+    "type": "unbranded",
+    "url": "https://www.lovesac.com/stealthtech-setup",
+    "referral": "not referred"
+  },
+  {
+    "prompt": "How to install speakers in a modular couch",
+    "topic": "Home theater sound and charging systems",
+    "category": "Lovesac Accessories and Instructions",
+    "intent": "instructional",
+    "type": "unbranded",
+    "url": "https://www.lovesac.com/stealthtech-setup",
+    "referral": "not referred"
+  },
+  {
+    "prompt": "How to set up Lovesac stealthtech speakers?",
+    "topic": "Home theater sound and charging systems",
+    "category": "Lovesac Accessories and Instructions",
+    "intent": "instructional",
+    "type": "branded",
+    "url": "https://www.lovesac.com/stealthtech-setup",
+    "referral": "not referred"
+  },
+  {
+    "prompt": "Sofa sound systems how do they work",
+    "topic": "Home theater sound and charging systems",
+    "category": "Lovesac Accessories and Instructions",
+    "intent": "informational",
+    "type": "unbranded",
+    "url": "https://www.lovesac.com/stealthtech-setup",
+    "referral": "not referred"
+  },
+  {
+    "prompt": "What tools do I need to set up stealthtech speakers?",
+    "topic": "Home theater sound and charging systems",
+    "category": "Lovesac Accessories and Instructions",
+    "intent": "planning",
+    "type": "branded",
+    "url": "https://www.lovesac.com/stealthtech-setup",
+    "referral": "not referred"
+  },
+  {
+    "prompt": "How long does it take to set up a sofa speaker?",
+    "topic": "Home theater sound and charging systems",
+    "category": "Lovesac Accessories and Instructions",
+    "intent": "informational",
+    "type": "unbranded",
+    "url": "https://www.lovesac.com/stealthtech-setup",
+    "referral": "not referred"
+  },
+  {
+    "prompt": "How to install a sound system in a modular sofa?",
+    "topic": "Home theater sound and charging systems",
+    "category": "Product",
+    "intent": "instructional",
+    "type": "unbranded",
+    "url": "https://www.lovesac.com/stealthtech-sound-charge-systems",
+    "referral": "not referred"
+  },
+  {
+    "prompt": "Adding Lovesac sound system to my sactional",
+    "topic": "Home theater sound and charging systems",
+    "category": "Product",
+    "intent": "instructional",
+    "type": "branded",
+    "url": "https://www.lovesac.com/stealthtech-sound-charge-systems",
+    "referral": "not referred"
+  },
+  {
+    "prompt": "Couches with speakers built into the cushions",
+    "topic": "Home theater sound and charging systems",
+    "category": "Product",
+    "intent": "informational",
+    "type": "unbranded",
+    "url": "https://www.lovesac.com/stealthtech-sound-charge-systems",
+    "referral": "not referred"
+  },
+  {
+    "prompt": "How does Lovesac stealthtech improve movie nights?",
+    "topic": "Home theater sound and charging systems",
+    "category": "Product",
+    "intent": "informational",
+    "type": "branded",
+    "url": "https://www.lovesac.com/stealthtech-sound-charge-systems",
+    "referral": "not referred"
+  },
+  {
+    "prompt": "Buy a sound system for my couch",
+    "topic": "Home theater sound and charging systems",
+    "category": "Product",
+    "intent": "transactional",
+    "type": "unbranded",
+    "url": "https://www.lovesac.com/stealthtech-sound-charge-systems",
+    "referral": "not referred"
+  },
+  {
+    "prompt": "Lovesac stealthtech compared to Sonos for couch speakers?",
+    "topic": "Home theater sound and charging systems",
+    "category": "Product",
+    "intent": "comparative",
+    "type": "branded",
+    "url": "https://www.lovesac.com/stealthtech-sound-charge-systems",
+    "referral": "not referred"
+  },
+  {
+    "prompt": "How to stack lovesac discount codes",
+    "topic": "Furniture discounts and savings",
+    "category": "Brand",
+    "intent": "informational",
+    "type": "branded",
+    "url": "https://www.lovesac.com/mailer15",
+    "referral": "not referred"
+  },
+  {
+    "prompt": "Current deals on sectional furniture",
+    "topic": "Furniture discounts and savings",
+    "category": "Brand",
+    "intent": "transactional",
+    "type": "unbranded",
+    "url": "https://www.lovesac.com/mailer15",
+    "referral": "not referred"
+  },
+  {
+    "prompt": "Purchase modular sofas at a good discount",
+    "topic": "Furniture discounts and savings",
+    "category": "Brand",
+    "intent": "transactional",
+    "type": "unbranded",
+    "url": "https://www.lovesac.com/mailer15",
+    "referral": "not referred"
+  },
+  {
+    "prompt": "Where can I find discounts for Lovesac products?",
+    "topic": "Furniture discounts and savings",
+    "category": "Brand",
+    "intent": "informational",
+    "type": "branded",
+    "url": "https://www.lovesac.com/mailer15",
+    "referral": "not referred"
+  },
+  {
+    "prompt": "Use direct discount codes on furniture",
+    "topic": "Furniture discounts and savings",
+    "category": "Brand",
+    "intent": "transactional",
+    "type": "unbranded",
+    "url": "https://www.lovesac.com/mailer15",
+    "referral": "not referred"
+  },
+  {
+    "prompt": "Get discount on large beanbags",
+    "topic": "Furniture discounts and savings",
+    "category": "Brand",
+    "intent": "planning",
+    "type": "unbranded",
+    "url": "https://www.lovesac.com/mailer15",
+    "referral": "not referred"
+  },
+  {
+    "prompt": "Couch with surround sound speakers built in",
+    "topic": "Home theater sound and charging systems",
+    "category": "Premium Modular Furniture",
+    "intent": "informational",
+    "type": "unbranded",
+    "url": "https://www.lovesac.com/learn-about-sactionals-stealthtech-sound-charge",
+    "referral": "not referred"
+  },
+  {
+    "prompt": "Lovesac stealthtech sound + charge system overview",
+    "topic": "Home theater sound and charging systems",
+    "category": "Premium Modular Furniture",
+    "intent": "informational",
+    "type": "branded",
+    "url": "https://www.lovesac.com/learn-about-sactionals-stealthtech-sound-charge",
+    "referral": "not referred"
+  },
+  {
+    "prompt": "Built-in surround sound sofa vs. standalone speakers",
+    "topic": "Home theater sound and charging systems",
+    "category": "Premium Modular Furniture",
+    "intent": "comparative",
+    "type": "unbranded",
+    "url": "https://www.lovesac.com/learn-about-sactionals-stealthtech-sound-charge",
+    "referral": "not referred"
+  },
+  {
+    "prompt": "Lovesac StealthTech vs other built-in sound furniture systems",
+    "topic": "Home theater sound and charging systems",
+    "category": "Premium Modular Furniture",
+    "intent": "comparative",
+    "type": "branded",
+    "url": "https://www.lovesac.com/learn-about-sactionals-stealthtech-sound-charge",
+    "referral": "not referred"
+  },
+  {
+    "prompt": "Buy a sectional sofa with built-in surround sound",
+    "topic": "Home theater sound and charging systems",
+    "category": "Premium Modular Furniture",
+    "intent": "transactional",
+    "type": "unbranded",
+    "url": "https://www.lovesac.com/learn-about-sactionals-stealthtech-sound-charge",
+    "referral": "not referred"
+  },
+  {
+    "prompt": "Adding Stealthtech to a Lovesac sactional guide",
+    "topic": "Home theater sound and charging systems",
+    "category": "Premium Modular Furniture",
+    "intent": "planning",
+    "type": "branded",
+    "url": "https://www.lovesac.com/learn-about-sactionals-stealthtech-sound-charge",
+    "referral": "not referred"
+  },
+  {
+    "prompt": "Lovesac bigone insert where does it fit",
+    "topic": "Bean bag inserts and refill options",
+    "category": "Lovesac Bean Bag Products",
+    "intent": "informational",
+    "type": "branded",
+    "url": "https://www.lovesac.com/products/bigone-insert",
+    "referral": "not referred"
+  },
+  {
+    "prompt": "Where to buy a huge bean bag filler?",
+    "topic": "Bean bag inserts and refill options",
+    "category": "Lovesac Bean Bag Products",
+    "intent": "transactional",
+    "type": "unbranded",
+    "url": "https://www.lovesac.com/products/bigone-insert",
+    "referral": "not referred"
+  },
+  {
+    "prompt": "Lovesac bigone insert buy online",
+    "topic": "Bean bag inserts and refill options",
+    "category": "Lovesac Bean Bag Products",
+    "intent": "transactional",
+    "type": "branded",
+    "url": "https://www.lovesac.com/products/bigone-insert",
+    "referral": "not referred"
+  },
+  {
+    "prompt": "Best replacement fills for oversized bean bags",
+    "topic": "Bean bag inserts and refill options",
+    "category": "Lovesac Bean Bag Products",
+    "intent": "comparative",
+    "type": "unbranded",
+    "url": "https://www.lovesac.com/products/bigone-insert",
+    "referral": "not referred"
+  },
+  {
+    "prompt": "How much does the Lovesac BigOne insert cost?",
+    "topic": "Bean bag inserts and refill options",
+    "category": "Lovesac Bean Bag Products",
+    "intent": "transactional",
+    "type": "branded",
+    "url": "https://www.lovesac.com/products/bigone-insert",
+    "referral": "not referred"
+  },
+  {
+    "prompt": "How much filling do I need for an oversized bean bag?",
+    "topic": "Bean bag inserts and refill options",
+    "category": "Lovesac Bean Bag Products",
+    "intent": "planning",
+    "type": "unbranded",
+    "url": "https://www.lovesac.com/products/bigone-insert",
+    "referral": "not referred"
+  },
+  {
+    "prompt": "3 seat modular couch benefits",
+    "topic": "Modular furniture configurations",
+    "category": "Premium Modular Furniture",
+    "intent": "informational",
+    "type": "unbranded",
+    "url": "https://www.lovesac.com/products/3-seats-5-sides-1-deep-sactional",
+    "referral": "not referred"
+  },
+  {
+    "prompt": "Compare modular sofas with traditional sofas",
+    "topic": "Modular furniture configurations",
+    "category": "Premium Modular Furniture",
+    "intent": "comparative",
+    "type": "unbranded",
+    "url": "https://www.lovesac.com/products/3-seats-5-sides-1-deep-sactional",
+    "referral": "not referred"
+  },
+  {
+    "prompt": "Lovesac modular seating compared to other brands",
+    "topic": "Modular furniture configurations",
+    "category": "Premium Modular Furniture",
+    "intent": "comparative",
+    "type": "branded",
+    "url": "https://www.lovesac.com/products/3-seats-5-sides-1-deep-sactional",
+    "referral": "not referred"
+  },
+  {
+    "prompt": "3 seat deep modular sofas buy online",
+    "topic": "Modular furniture configurations",
+    "category": "Premium Modular Furniture",
+    "intent": "transactional",
+    "type": "unbranded",
+    "url": "https://www.lovesac.com/products/3-seats-5-sides-1-deep-sactional",
+    "referral": "not referred"
+  },
+  {
+    "prompt": "Customizable deep sectional couch online",
+    "topic": "Modular furniture configurations",
+    "category": "Premium Modular Furniture",
+    "intent": "transactional",
+    "type": "unbranded",
+    "url": "https://www.lovesac.com/products/3-seats-5-sides-1-deep-sactional",
+    "referral": "not referred"
+  },
+  {
+    "prompt": "Lovesac mid-size sactional sets buy online",
+    "topic": "Modular furniture configurations",
+    "category": "Premium Modular Furniture",
+    "intent": "transactional",
+    "type": "branded",
+    "url": "https://www.lovesac.com/products/3-seats-5-sides-1-deep-sactional",
+    "referral": "not referred"
+  },
+  {
+    "prompt": "Deals at furniture roadshow events",
+    "topic": "Event promotion",
+    "category": "Brand",
+    "intent": "informational",
+    "type": "unbranded",
+    "url": "https://www.lovesac.com/visit-the-lovesac-roadshow",
+    "referral": "not referred"
+  },
+  {
+    "prompt": "Find a Lovesac roadshow near me",
+    "topic": "Event promotion",
+    "category": "Brand",
+    "intent": "transactional",
+    "type": "branded",
+    "url": "https://www.lovesac.com/visit-the-lovesac-roadshow",
+    "referral": "not referred"
+  },
+  {
+    "prompt": "Furniture pop-up shops near me this weekend",
+    "topic": "Event promotion",
+    "category": "Brand",
+    "intent": "informational",
+    "type": "unbranded",
+    "url": "https://www.lovesac.com/visit-the-lovesac-roadshow",
+    "referral": "not referred"
+  },
+  {
+    "prompt": "Try couches at a pop-up event near me",
+    "topic": "Event promotion",
+    "category": "Brand",
+    "intent": "informational",
+    "type": "unbranded",
+    "url": "https://www.lovesac.com/visit-the-lovesac-roadshow",
+    "referral": "not referred"
+  },
+  {
+    "prompt": "Lovesac deals in roadshow event vs showroom",
+    "topic": "Event promotion",
+    "category": "Brand",
+    "intent": "planning",
+    "type": "branded",
+    "url": "https://www.lovesac.com/visit-the-lovesac-roadshow",
+    "referral": "not referred"
+  },
+  {
+    "prompt": "Plan a furniture roadshow visit",
+    "topic": "Event promotion",
+    "category": "Brand",
+    "intent": "planning",
+    "type": "unbranded",
+    "url": "https://www.lovesac.com/visit-the-lovesac-roadshow",
+    "referral": "not referred"
+  },
+  {
+    "prompt": "Top grain vs bonded leather for modular couch",
+    "topic": "Modular furniture configurations",
+    "category": "Premium Modular Furniture",
+    "intent": "informational",
+    "type": "unbranded",
+    "url": "https://www.lovesac.com/products/3-seats-5-sides-sactional-russet-top-grain-leather",
+    "referral": "not referred"
+  },
+  {
+    "prompt": "Modular leather couches vs traditional leather sofas",
+    "topic": "Modular furniture configurations",
+    "category": "Premium Modular Furniture",
+    "intent": "comparative",
+    "type": "unbranded",
+    "url": "https://www.lovesac.com/products/3-seats-5-sides-sactional-russet-top-grain-leather",
+    "referral": "not referred"
+  },
+  {
+    "prompt": "Lovesac leather durability vs competitors",
+    "topic": "Modular furniture configurations",
+    "category": "Premium Modular Furniture",
+    "intent": "comparative",
+    "type": "branded",
+    "url": "https://www.lovesac.com/products/3-seats-5-sides-sactional-russet-top-grain-leather",
+    "referral": "not referred"
+  },
+  {
+    "prompt": "Buy modular top grain leather couches",
+    "topic": "Modular furniture configurations",
+    "category": "Premium Modular Furniture",
+    "intent": "transactional",
+    "type": "unbranded",
+    "url": "https://www.lovesac.com/products/3-seats-5-sides-sactional-russet-top-grain-leather",
+    "referral": "not referred"
+  },
+  {
+    "prompt": "Order Lovesac sactionals in russet leather",
+    "topic": "Modular furniture configurations",
+    "category": "Premium Modular Furniture",
+    "intent": "transactional",
+    "type": "branded",
+    "url": "https://www.lovesac.com/products/3-seats-5-sides-sactional-russet-top-grain-leather",
+    "referral": "not referred"
+  },
+  {
+    "prompt": "Brown leather modular couch option",
+    "topic": "Modular furniture configurations",
+    "category": "Premium Modular Furniture",
+    "intent": "transactional",
+    "type": "unbranded",
+    "url": "https://www.lovesac.com/products/3-seats-5-sides-sactional-russet-top-grain-leather",
+    "referral": "not referred"
+  },
+  {
+    "prompt": "Size of a 6 piece modular sectional couch",
+    "topic": "Modular furniture configurations",
+    "category": "Premium Modular Furniture",
+    "intent": "informational",
+    "type": "unbranded",
+    "url": "https://www.lovesac.com/products/6-seats-8-sides-1-deep-sactional",
+    "referral": "not referred"
+  },
+  {
+    "prompt": "Best modular sofas for flexible seating options",
+    "topic": "Modular furniture configurations",
+    "category": "Premium Modular Furniture",
+    "intent": "comparative",
+    "type": "unbranded",
+    "url": "https://www.lovesac.com/products/6-seats-8-sides-1-deep-sactional",
+    "referral": "not referred"
+  },
+  {
+    "prompt": "Lovesac Sactionals vs other modular furniture",
+    "topic": "Modular furniture configurations",
+    "category": "Premium Modular Furniture",
+    "intent": "comparative",
+    "type": "branded",
+    "url": "https://www.lovesac.com/products/6-seats-8-sides-1-deep-sactional",
+    "referral": "not referred"
+  },
+  {
+    "prompt": "Large sectional I can rearrange for different layouts",
+    "topic": "Modular furniture configurations",
+    "category": "Premium Modular Furniture",
+    "intent": "transactional",
+    "type": "unbranded",
+    "url": "https://www.lovesac.com/products/6-seats-8-sides-1-deep-sactional",
+    "referral": "not referred"
+  },
+  {
+    "prompt": "Buy customizable sectional sofas",
+    "topic": "Modular furniture configurations",
+    "category": "Premium Modular Furniture",
+    "intent": "transactional",
+    "type": "unbranded",
+    "url": "https://www.lovesac.com/products/6-seats-8-sides-1-deep-sactional",
+    "referral": "not referred"
+  },
+  {
+    "prompt": "Lovesac sactional big enough for family of 6",
+    "topic": "Modular furniture configurations",
+    "category": "Premium Modular Furniture",
+    "intent": "transactional",
+    "type": "branded",
+    "url": "https://www.lovesac.com/products/6-seats-8-sides-1-deep-sactional",
+    "referral": "not referred"
+  },
+  {
+    "prompt": "Materials used in premium modular sectionals",
+    "topic": "Modular furniture configurations",
+    "category": "Premium Modular Furniture",
+    "intent": "informational",
+    "type": "unbranded",
+    "url": "https://www.lovesac.com/products/4-seats-5-sides-sactional",
+    "referral": "not referred"
+  },
+  {
+    "prompt": "Customize Lovesac sactionals",
+    "topic": "Modular furniture configurations",
+    "category": "Premium Modular Furniture",
+    "intent": "informational",
+    "type": "branded",
+    "url": "https://www.lovesac.com/products/4-seats-5-sides-sactional",
+    "referral": "not referred"
+  },
+  {
+    "prompt": "Best modular seating options for medium spaces",
+    "topic": "Modular furniture configurations",
+    "category": "Premium Modular Furniture",
+    "intent": "comparative",
+    "type": "unbranded",
+    "url": "https://www.lovesac.com/products/4-seats-5-sides-sactional",
+    "referral": "not referred"
+  },
+  {
+    "prompt": "Modular sectional that fits 4 people comfortably",
+    "topic": "Modular furniture configurations",
+    "category": "Premium Modular Furniture",
+    "intent": "transactional",
+    "type": "unbranded",
+    "url": "https://www.lovesac.com/products/4-seats-5-sides-sactional",
+    "referral": "not referred"
+  },
+  {
+    "prompt": "Fabric options Lovesac have for Sactionals",
+    "topic": "Modular furniture configurations",
+    "category": "Premium Modular Furniture",
+    "intent": "transactional",
+    "type": "branded",
+    "url": "https://www.lovesac.com/products/4-seats-5-sides-sactional",
+    "referral": "not referred"
+  },
+  {
+    "prompt": "Price of modular sectionals with washable covers",
+    "topic": "Modular furniture configurations",
+    "category": "Premium Modular Furniture",
+    "intent": "transactional",
+    "type": "unbranded",
+    "url": "https://www.lovesac.com/products/4-seats-5-sides-sactional",
+    "referral": "not referred"
+  },
+  {
+    "prompt": "Sectional furniture trade discounts for interior designers",
+    "topic": "Furniture discounts and savings",
+    "category": "Brand",
+    "intent": "informational",
+    "type": "unbranded",
+    "url": "https://www.lovesac.com/to-the-trade-details",
+    "referral": "not referred"
+  },
+  {
+    "prompt": "Discounts and deals designers get on furniture",
+    "topic": "Furniture discounts and savings",
+    "category": "Brand",
+    "intent": "informational",
+    "type": "unbranded",
+    "url": "https://www.lovesac.com/to-the-trade-details",
+    "referral": "not referred"
+  },
+  {
+    "prompt": "Furniture brands that offer the best trade discounts",
+    "topic": "Furniture discounts and savings",
+    "category": "Brand",
+    "intent": "comparative",
+    "type": "unbranded",
+    "url": "https://www.lovesac.com/to-the-trade-details",
+    "referral": "not referred"
+  },
+  {
+    "prompt": "Lovesac trade discounts for interior designers",
+    "topic": "Furniture discounts and savings",
+    "category": "Brand",
+    "intent": "informational",
+    "type": "branded",
+    "url": "https://www.lovesac.com/to-the-trade-details",
+    "referral": "not referred"
+  },
+  {
+    "prompt": "Join Lovesac trade membership program",
+    "topic": "Furniture discounts and savings",
+    "category": "Brand",
+    "intent": "transactional",
+    "type": "branded",
+    "url": "https://www.lovesac.com/to-the-trade-details",
+    "referral": "not referred"
+  },
+  {
+    "prompt": "Lovesac trade program perks vs other furniture programs",
+    "topic": "Furniture discounts and savings",
+    "category": "Brand",
+    "intent": "comparative",
+    "type": "branded",
+    "url": "https://www.lovesac.com/to-the-trade-details",
+    "referral": "not referred"
+  },
+  {
+    "prompt": "Couch cushion with hidden storage underneath",
+    "topic": "Furniture accessories and components",
+    "category": "Lovesac Accessories and Instructions",
+    "intent": "informational",
+    "type": "unbranded",
+    "url": "https://www.lovesac.com/products/sactionals-deep-storage-seat-insert-set-standard",
+    "referral": "not referred"
+  },
+  {
+    "prompt": "Hidden storage under sofa cushions pros and cons",
+    "topic": "Furniture accessories and components",
+    "category": "Lovesac Accessories and Instructions",
+    "intent": "comparative",
+    "type": "unbranded",
+    "url": "https://www.lovesac.com/products/sactionals-deep-storage-seat-insert-set-standard",
+    "referral": "not referred"
+  },
+  {
+    "prompt": "How to organize a modular sofa with hidden storage",
+    "topic": "Furniture accessories and components",
+    "category": "Lovesac Accessories and Instructions",
+    "intent": "instructional",
+    "type": "unbranded",
+    "url": "https://www.lovesac.com/products/sactionals-deep-storage-seat-insert-set-standard",
+    "referral": "not referred"
+  },
+  {
+    "prompt": "Sofa seat with built-in storage compartment",
+    "topic": "Furniture accessories and components",
+    "category": "Lovesac Accessories and Instructions",
+    "intent": "transactional",
+    "type": "unbranded",
+    "url": "https://www.lovesac.com/products/sactionals-deep-storage-seat-insert-set-standard",
+    "referral": "not referred"
+  },
+  {
+    "prompt": "Buy Lovesac deep storage seat insert set",
+    "topic": "Furniture accessories and components",
+    "category": "Lovesac Accessories and Instructions",
+    "intent": "transactional",
+    "type": "branded",
+    "url": "https://www.lovesac.com/products/sactionals-deep-storage-seat-insert-set-standard",
+    "referral": "not referred"
+  },
+  {
+    "prompt": "Lovesac sactionals storage seat price",
+    "topic": "Furniture accessories and components",
+    "category": "Lovesac Accessories and Instructions",
+    "intent": "transactional",
+    "type": "branded",
+    "url": "https://www.lovesac.com/products/sactionals-deep-storage-seat-insert-set-standard",
+    "referral": "not referred"
+  },
+  {
+    "prompt": "Wireless add-on subwoofer for a couch sound system",
+    "topic": "Home theater sound and charging systems",
+    "category": "Lovesac Accessories and Instructions",
+    "intent": "informational",
+    "type": "unbranded",
+    "url": "https://www.lovesac.com/products/sactionals-stealthtech-sound-charge-satellite-subwoofer",
+    "referral": "not referred"
+  },
+  {
+    "prompt": "Lovesac stealthtech subwoofer vs other home theater subs",
+    "topic": "Home theater sound and charging systems",
+    "category": "Lovesac Accessories and Instructions",
+    "intent": "comparative",
+    "type": "branded",
+    "url": "https://www.lovesac.com/products/sactionals-stealthtech-sound-charge-satellite-subwoofer",
+    "referral": "not referred"
+  },
+  {
+    "prompt": "Where can I buy add-on wireless subwoofer for home theater couch",
+    "topic": "Home theater sound and charging systems",
+    "category": "Lovesac Accessories and Instructions",
+    "intent": "transactional",
+    "type": "unbranded",
+    "url": "https://www.lovesac.com/products/sactionals-stealthtech-sound-charge-satellite-subwoofer",
+    "referral": "not referred"
+  },
+  {
+    "prompt": "Wireless subwoofer upgrade for home theater seating",
+    "topic": "Home theater sound and charging systems",
+    "category": "Lovesac Accessories and Instructions",
+    "intent": "transactional",
+    "type": "unbranded",
+    "url": "https://www.lovesac.com/products/sactionals-stealthtech-sound-charge-satellite-subwoofer",
+    "referral": "not referred"
+  },
+  {
+    "prompt": "Buy Lovesac satellite subwoofer for improved bass",
+    "topic": "Home theater sound and charging systems",
+    "category": "Lovesac Accessories and Instructions",
+    "intent": "transactional",
+    "type": "branded",
+    "url": "https://www.lovesac.com/products/sactionals-stealthtech-sound-charge-satellite-subwoofer",
+    "referral": "not referred"
+  },
+  {
+    "prompt": "Wireless couch subwoofer cost for home theater",
+    "topic": "Home theater sound and charging systems",
+    "category": "Lovesac Accessories and Instructions",
+    "intent": "transactional",
+    "type": "unbranded",
+    "url": "https://www.lovesac.com/products/sactionals-stealthtech-sound-charge-satellite-subwoofer",
+    "referral": "not referred"
+  }
+]

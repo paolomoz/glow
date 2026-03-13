@@ -99,7 +99,7 @@ export interface ClearAllMessage {
   tabId?: number;
 }
 
-export type GenerationSource = 'signals' | 'chatgpt';
+export type GenerationSource = 'signals' | 'chatgpt' | 'llmo';
 
 export interface IndexStatusResponse {
   indexed: boolean;

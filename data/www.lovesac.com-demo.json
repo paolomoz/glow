@@ -1,0 +1,837 @@
+{
+  "siteId": "www.lovesac.com",
+  "atoms": [
+    {
+      "id": "atom_lsac_stealthtech_h1",
+      "content": "Sactionals with StealthTech Sound + Charge",
+      "sourceUrl": "https://www.lovesac.com/sactionals-with-stealthtech-sound-charge",
+      "blockPosition": 0,
+      "contentType": "headline",
+      "metadata": {
+        "topics": ["stealthtech", "sound", "charging", "sactionals"],
+        "audienceDepth": "novice",
+        "purpose": "inform",
+        "emotionalRegister": "inspiring",
+        "wordCount": 6,
+        "language": "en"
+      },
+      "version": 1,
+      "createdAt": "2026-03-12T00:00:00.000Z",
+      "updatedAt": "2026-03-12T00:00:00.000Z"
+    },
+    {
+      "id": "atom_lsac_stealthtech_body1",
+      "content": "Invisible speakers and wireless charging built right into your Sactionals. StealthTech transforms your couch into a home theater with Harman Kardon sound — no visible speakers, no wires, no clutter.",
+      "sourceUrl": "https://www.lovesac.com/sactionals-with-stealthtech-sound-charge",
+      "blockPosition": 0,
+      "contentType": "body",
+      "metadata": {
+        "topics": ["stealthtech", "harman kardon", "wireless", "home theater"],
+        "audienceDepth": "novice",
+        "purpose": "inform",
+        "emotionalRegister": "inspiring",
+        "wordCount": 32,
+        "language": "en"
+      },
+      "version": 1,
+      "createdAt": "2026-03-12T00:00:00.000Z",
+      "updatedAt": "2026-03-12T00:00:00.000Z"
+    },
+    {
+      "id": "atom_lsac_stealthtech_cta1",
+      "content": "Shop StealthTech",
+      "sourceUrl": "https://www.lovesac.com/sactionals-with-stealthtech-sound-charge",
+      "blockPosition": 0,
+      "contentType": "cta",
+      "metadata": {
+        "topics": ["stealthtech", "purchase"],
+        "audienceDepth": "novice",
+        "purpose": "enable-action",
+        "emotionalRegister": "urgent",
+        "wordCount": 2,
+        "language": "en"
+      },
+      "version": 1,
+      "createdAt": "2026-03-12T00:00:00.000Z",
+      "updatedAt": "2026-03-12T00:00:00.000Z"
+    },
+    {
+      "id": "atom_lsac_stealthtech_stat1",
+      "content": "5.1 Channel Surround Sound",
+      "sourceUrl": "https://www.lovesac.com/sactionals-with-stealthtech-sound-charge",
+      "blockPosition": 0,
+      "contentType": "stat",
+      "metadata": {
+        "topics": ["stealthtech", "surround sound", "audio"],
+        "audienceDepth": "intermediate",
+        "purpose": "inform",
+        "emotionalRegister": "authoritative",
+        "wordCount": 4,
+        "language": "en"
+      },
+      "version": 1,
+      "createdAt": "2026-03-12T00:00:00.000Z",
+      "updatedAt": "2026-03-12T00:00:00.000Z"
+    },
+    {
+      "id": "atom_lsac_stealthtech_body2",
+      "content": "Qi-compatible wireless charging pads are hidden within the armrests, keeping your devices powered without visible cables. Just set your phone on the arm and charge.",
+      "sourceUrl": "https://www.lovesac.com/sactionals-with-stealthtech-sound-charge",
+      "blockPosition": 1,
+      "contentType": "body",
+      "metadata": {
+        "topics": ["wireless charging", "qi", "convenience"],
+        "audienceDepth": "novice",
+        "purpose": "inform",
+        "emotionalRegister": "rational",
+        "wordCount": 27,
+        "language": "en"
+      },
+      "version": 1,
+      "createdAt": "2026-03-12T00:00:00.000Z",
+      "updatedAt": "2026-03-12T00:00:00.000Z"
+    },
+    {
+      "id": "atom_lsac_modular_h1",
+      "content": "The World's Most Adaptable Couch",
+      "sourceUrl": "https://www.lovesac.com/products/4-seats-5-sides-sactional",
+      "blockPosition": 0,
+      "contentType": "headline",
+      "metadata": {
+        "topics": ["modular", "sactionals", "adaptable", "furniture"],
+        "audienceDepth": "novice",
+        "purpose": "persuade",
+        "emotionalRegister": "inspiring",
+        "wordCount": 5,
+        "language": "en"
+      },
+      "version": 1,
+      "createdAt": "2026-03-12T00:00:00.000Z",
+      "updatedAt": "2026-03-12T00:00:00.000Z"
+    },
+    {
+      "id": "atom_lsac_modular_body1",
+      "content": "Sactionals are modular sectionals that can be rearranged into any configuration. Add seats, sides, and accessories as your life changes. They're designed to last a lifetime and adapt to any room.",
+      "sourceUrl": "https://www.lovesac.com/products/4-seats-5-sides-sactional",
+      "blockPosition": 0,
+      "contentType": "body",
+      "metadata": {
+        "topics": ["modular", "sactionals", "configurable", "lifetime"],
+        "audienceDepth": "novice",
+        "purpose": "persuade",
+        "emotionalRegister": "inspiring",
+        "wordCount": 33,
+        "language": "en"
+      },
+      "version": 1,
+      "createdAt": "2026-03-12T00:00:00.000Z",
+      "updatedAt": "2026-03-12T00:00:00.000Z"
+    },
+    {
+      "id": "atom_lsac_modular_cta1",
+      "content": "Build Your Sactional",
+      "sourceUrl": "https://www.lovesac.com/products/4-seats-5-sides-sactional",
+      "blockPosition": 0,
+      "contentType": "cta",
+      "metadata": {
+        "topics": ["sactionals", "configure", "purchase"],
+        "audienceDepth": "novice",
+        "purpose": "enable-action",
+        "emotionalRegister": "urgent",
+        "wordCount": 3,
+        "language": "en"
+      },
+      "version": 1,
+      "createdAt": "2026-03-12T00:00:00.000Z",
+      "updatedAt": "2026-03-12T00:00:00.000Z"
+    },
+    {
+      "id": "atom_lsac_modular_stat1",
+      "content": "200+ fabric and color options",
+      "sourceUrl": "https://www.lovesac.com/products/4-seats-5-sides-sactional",
+      "blockPosition": 0,
+      "contentType": "stat",
+      "metadata": {
+        "topics": ["fabrics", "colors", "customization"],
+        "audienceDepth": "novice",
+        "purpose": "inform",
+        "emotionalRegister": "rational",
+        "wordCount": 5,
+        "language": "en"
+      },
+      "version": 1,
+      "createdAt": "2026-03-12T00:00:00.000Z",
+      "updatedAt": "2026-03-12T00:00:00.000Z"
+    },
+    {
+      "id": "atom_lsac_modular_body2",
+      "content": "Every cover is machine washable and changeable, so your Sactional can evolve with your style. Spills, pets, kids — no problem.",
+      "sourceUrl": "https://www.lovesac.com/products/4-seats-5-sides-sactional",
+      "blockPosition": 1,
+      "contentType": "body",
+      "metadata": {
+        "topics": ["washable", "covers", "durability", "family"],
+        "audienceDepth": "novice",
+        "purpose": "persuade",
+        "emotionalRegister": "empathetic",
+        "wordCount": 20,
+        "language": "en"
+      },
+      "version": 1,
+      "createdAt": "2026-03-12T00:00:00.000Z",
+      "updatedAt": "2026-03-12T00:00:00.000Z"
+    },
+    {
+      "id": "atom_lsac_deep_h1",
+      "content": "Go Deep. Seriously Deep.",
+      "sourceUrl": "https://www.lovesac.com/products/3-seats-5-sides-1-deep-sactional",
+      "blockPosition": 0,
+      "contentType": "headline",
+      "metadata": {
+        "topics": ["deep seat", "sactionals", "comfort"],
+        "audienceDepth": "intermediate",
+        "purpose": "persuade",
+        "emotionalRegister": "inspiring",
+        "wordCount": 4,
+        "language": "en"
+      },
+      "version": 1,
+      "createdAt": "2026-03-12T00:00:00.000Z",
+      "updatedAt": "2026-03-12T00:00:00.000Z"
+    },
+    {
+      "id": "atom_lsac_deep_body1",
+      "content": "Deep Sactionals feature an extra-deep seat depth for ultimate lounging. Stretch out, curl up, or sink in — with 30% more depth than a standard Sactional.",
+      "sourceUrl": "https://www.lovesac.com/products/3-seats-5-sides-1-deep-sactional",
+      "blockPosition": 0,
+      "contentType": "body",
+      "metadata": {
+        "topics": ["deep seat", "lounging", "comfort", "dimensions"],
+        "audienceDepth": "intermediate",
+        "purpose": "persuade",
+        "emotionalRegister": "inspiring",
+        "wordCount": 26,
+        "language": "en"
+      },
+      "version": 1,
+      "createdAt": "2026-03-12T00:00:00.000Z",
+      "updatedAt": "2026-03-12T00:00:00.000Z"
+    },
+    {
+      "id": "atom_lsac_deep_cta1",
+      "content": "Explore Deep Sactionals",
+      "sourceUrl": "https://www.lovesac.com/products/3-seats-5-sides-1-deep-sactional",
+      "blockPosition": 0,
+      "contentType": "cta",
+      "metadata": {
+        "topics": ["deep seat", "explore"],
+        "audienceDepth": "intermediate",
+        "purpose": "enable-action",
+        "emotionalRegister": "rational",
+        "wordCount": 3,
+        "language": "en"
+      },
+      "version": 1,
+      "createdAt": "2026-03-12T00:00:00.000Z",
+      "updatedAt": "2026-03-12T00:00:00.000Z"
+    },
+    {
+      "id": "atom_lsac_storage_h1",
+      "content": "Hidden Storage, Built Right In",
+      "sourceUrl": "https://www.lovesac.com/products/sactionals-deep-storage-seat-insert-set-standard",
+      "blockPosition": 0,
+      "contentType": "headline",
+      "metadata": {
+        "topics": ["storage", "accessories", "organization"],
+        "audienceDepth": "intermediate",
+        "purpose": "inform",
+        "emotionalRegister": "rational",
+        "wordCount": 5,
+        "language": "en"
+      },
+      "version": 1,
+      "createdAt": "2026-03-12T00:00:00.000Z",
+      "updatedAt": "2026-03-12T00:00:00.000Z"
+    },
+    {
+      "id": "atom_lsac_storage_body1",
+      "content": "The Deep Storage Seat Insert transforms any Sactional seat into a secret storage compartment. Stow blankets, remotes, or toys out of sight but within easy reach.",
+      "sourceUrl": "https://www.lovesac.com/products/sactionals-deep-storage-seat-insert-set-standard",
+      "blockPosition": 0,
+      "contentType": "body",
+      "metadata": {
+        "topics": ["storage", "organization", "accessories"],
+        "audienceDepth": "intermediate",
+        "purpose": "inform",
+        "emotionalRegister": "rational",
+        "wordCount": 26,
+        "language": "en"
+      },
+      "version": 1,
+      "createdAt": "2026-03-12T00:00:00.000Z",
+      "updatedAt": "2026-03-12T00:00:00.000Z"
+    },
+    {
+      "id": "atom_lsac_bigone_h1",
+      "content": "The BigOne — The World's Most Comfortable Seat",
+      "sourceUrl": "https://www.lovesac.com/products/bigone-insert",
+      "blockPosition": 0,
+      "contentType": "headline",
+      "metadata": {
+        "topics": ["sac", "bean bag", "comfort", "bigone"],
+        "audienceDepth": "novice",
+        "purpose": "persuade",
+        "emotionalRegister": "inspiring",
+        "wordCount": 7,
+        "language": "en"
+      },
+      "version": 1,
+      "createdAt": "2026-03-12T00:00:00.000Z",
+      "updatedAt": "2026-03-12T00:00:00.000Z"
+    },
+    {
+      "id": "atom_lsac_bigone_body1",
+      "content": "Filled with Durafoam — our proprietary blend of shredded foam that's softer than memory foam and more durable than bean bag beads. The BigOne is 6 feet of pure comfort.",
+      "sourceUrl": "https://www.lovesac.com/products/bigone-insert",
+      "blockPosition": 0,
+      "contentType": "body",
+      "metadata": {
+        "topics": ["durafoam", "sac", "comfort", "materials"],
+        "audienceDepth": "novice",
+        "purpose": "persuade",
+        "emotionalRegister": "inspiring",
+        "wordCount": 28,
+        "language": "en"
+      },
+      "version": 1,
+      "createdAt": "2026-03-12T00:00:00.000Z",
+      "updatedAt": "2026-03-12T00:00:00.000Z"
+    },
+    {
+      "id": "atom_lsac_bigone_cta1",
+      "content": "Shop Sacs",
+      "sourceUrl": "https://www.lovesac.com/products/bigone-insert",
+      "blockPosition": 0,
+      "contentType": "cta",
+      "metadata": {
+        "topics": ["sac", "purchase"],
+        "audienceDepth": "novice",
+        "purpose": "enable-action",
+        "emotionalRegister": "urgent",
+        "wordCount": 2,
+        "language": "en"
+      },
+      "version": 1,
+      "createdAt": "2026-03-12T00:00:00.000Z",
+      "updatedAt": "2026-03-12T00:00:00.000Z"
+    },
+    {
+      "id": "atom_lsac_stealthtech_satellite_h1",
+      "content": "StealthTech Satellite & Subwoofer",
+      "sourceUrl": "https://www.lovesac.com/products/sactionals-stealthtech-sound-charge-satellite-subwoofer",
+      "blockPosition": 0,
+      "contentType": "headline",
+      "metadata": {
+        "topics": ["stealthtech", "subwoofer", "satellite", "audio"],
+        "audienceDepth": "intermediate",
+        "purpose": "inform",
+        "emotionalRegister": "authoritative",
+        "wordCount": 4,
+        "language": "en"
+      },
+      "version": 1,
+      "createdAt": "2026-03-12T00:00:00.000Z",
+      "updatedAt": "2026-03-12T00:00:00.000Z"
+    },
+    {
+      "id": "atom_lsac_stealthtech_satellite_body1",
+      "content": "Add satellite speakers and a wireless subwoofer to create a true 5.1 surround sound experience, all hidden inside your Sactional. Powered by Harman Kardon.",
+      "sourceUrl": "https://www.lovesac.com/products/sactionals-stealthtech-sound-charge-satellite-subwoofer",
+      "blockPosition": 0,
+      "contentType": "body",
+      "metadata": {
+        "topics": ["stealthtech", "surround sound", "harman kardon", "subwoofer"],
+        "audienceDepth": "intermediate",
+        "purpose": "inform",
+        "emotionalRegister": "authoritative",
+        "wordCount": 25,
+        "language": "en"
+      },
+      "version": 1,
+      "createdAt": "2026-03-12T00:00:00.000Z",
+      "updatedAt": "2026-03-12T00:00:00.000Z"
+    },
+    {
+      "id": "atom_lsac_setup_h1",
+      "content": "Setting Up Your StealthTech",
+      "sourceUrl": "https://www.lovesac.com/stealthtech-setup",
+      "blockPosition": 0,
+      "contentType": "headline",
+      "metadata": {
+        "topics": ["stealthtech", "setup", "instructions"],
+        "audienceDepth": "intermediate",
+        "purpose": "inform",
+        "emotionalRegister": "rational",
+        "wordCount": 4,
+        "language": "en"
+      },
+      "version": 1,
+      "createdAt": "2026-03-12T00:00:00.000Z",
+      "updatedAt": "2026-03-12T00:00:00.000Z"
+    },
+    {
+      "id": "atom_lsac_setup_body1",
+      "content": "StealthTech setup is simple: connect the hub, pair your speakers via the Lovesac app, and calibrate the sound. The entire process takes about 15 minutes.",
+      "sourceUrl": "https://www.lovesac.com/stealthtech-setup",
+      "blockPosition": 0,
+      "contentType": "body",
+      "metadata": {
+        "topics": ["stealthtech", "setup", "app", "instructions"],
+        "audienceDepth": "intermediate",
+        "purpose": "inform",
+        "emotionalRegister": "rational",
+        "wordCount": 25,
+        "language": "en"
+      },
+      "version": 1,
+      "createdAt": "2026-03-12T00:00:00.000Z",
+      "updatedAt": "2026-03-12T00:00:00.000Z"
+    },
+    {
+      "id": "atom_lsac_firmware_h1",
+      "content": "StealthTech Firmware Updates",
+      "sourceUrl": "https://www.lovesac.com/stealthtech-firmware-updates",
+      "blockPosition": 0,
+      "contentType": "headline",
+      "metadata": {
+        "topics": ["stealthtech", "firmware", "updates", "maintenance"],
+        "audienceDepth": "intermediate",
+        "purpose": "inform",
+        "emotionalRegister": "rational",
+        "wordCount": 3,
+        "language": "en"
+      },
+      "version": 1,
+      "createdAt": "2026-03-12T00:00:00.000Z",
+      "updatedAt": "2026-03-12T00:00:00.000Z"
+    },
+    {
+      "id": "atom_lsac_firmware_body1",
+      "content": "Keep your StealthTech system performing at its best with over-the-air firmware updates. Updates are automatic through the Lovesac app and take just a few minutes.",
+      "sourceUrl": "https://www.lovesac.com/stealthtech-firmware-updates",
+      "blockPosition": 0,
+      "contentType": "body",
+      "metadata": {
+        "topics": ["firmware", "updates", "app", "maintenance"],
+        "audienceDepth": "intermediate",
+        "purpose": "inform",
+        "emotionalRegister": "rational",
+        "wordCount": 26,
+        "language": "en"
+      },
+      "version": 1,
+      "createdAt": "2026-03-12T00:00:00.000Z",
+      "updatedAt": "2026-03-12T00:00:00.000Z"
+    },
+    {
+      "id": "atom_lsac_sound_systems_h1",
+      "content": "StealthTech Sound + Charge Systems",
+      "sourceUrl": "https://www.lovesac.com/stealthtech-sound-charge-systems",
+      "blockPosition": 0,
+      "contentType": "headline",
+      "metadata": {
+        "topics": ["stealthtech", "sound systems", "charging"],
+        "audienceDepth": "novice",
+        "purpose": "inform",
+        "emotionalRegister": "inspiring",
+        "wordCount": 5,
+        "language": "en"
+      },
+      "version": 1,
+      "createdAt": "2026-03-12T00:00:00.000Z",
+      "updatedAt": "2026-03-12T00:00:00.000Z"
+    },
+    {
+      "id": "atom_lsac_sound_systems_body1",
+      "content": "Choose from multiple StealthTech configurations: soundbar-only for music lovers, full 5.1 surround for movie nights, or sound + charge for the ultimate setup. Starting at $1,295.",
+      "sourceUrl": "https://www.lovesac.com/stealthtech-sound-charge-systems",
+      "blockPosition": 0,
+      "contentType": "body",
+      "metadata": {
+        "topics": ["stealthtech", "configurations", "pricing", "sound"],
+        "audienceDepth": "intermediate",
+        "purpose": "compare",
+        "emotionalRegister": "rational",
+        "wordCount": 28,
+        "language": "en"
+      },
+      "version": 1,
+      "createdAt": "2026-03-12T00:00:00.000Z",
+      "updatedAt": "2026-03-12T00:00:00.000Z"
+    },
+    {
+      "id": "atom_lsac_trade_h1",
+      "content": "Lovesac To The Trade Program",
+      "sourceUrl": "https://www.lovesac.com/to-the-trade-details",
+      "blockPosition": 0,
+      "contentType": "headline",
+      "metadata": {
+        "topics": ["trade", "interior design", "professional"],
+        "audienceDepth": "expert",
+        "purpose": "inform",
+        "emotionalRegister": "authoritative",
+        "wordCount": 5,
+        "language": "en"
+      },
+      "version": 1,
+      "createdAt": "2026-03-12T00:00:00.000Z",
+      "updatedAt": "2026-03-12T00:00:00.000Z"
+    },
+    {
+      "id": "atom_lsac_trade_body1",
+      "content": "Interior designers and trade professionals get exclusive pricing, dedicated support, and access to the full Sactionals catalog. Create custom configurations for your clients.",
+      "sourceUrl": "https://www.lovesac.com/to-the-trade-details",
+      "blockPosition": 0,
+      "contentType": "body",
+      "metadata": {
+        "topics": ["trade", "professional", "pricing", "design"],
+        "audienceDepth": "expert",
+        "purpose": "inform",
+        "emotionalRegister": "authoritative",
+        "wordCount": 24,
+        "language": "en"
+      },
+      "version": 1,
+      "createdAt": "2026-03-12T00:00:00.000Z",
+      "updatedAt": "2026-03-12T00:00:00.000Z"
+    },
+    {
+      "id": "atom_lsac_roadshow_h1",
+      "content": "Visit the Lovesac Roadshow",
+      "sourceUrl": "https://www.lovesac.com/visit-the-lovesac-roadshow",
+      "blockPosition": 0,
+      "contentType": "headline",
+      "metadata": {
+        "topics": ["roadshow", "events", "showroom"],
+        "audienceDepth": "novice",
+        "purpose": "enable-action",
+        "emotionalRegister": "inspiring",
+        "wordCount": 5,
+        "language": "en"
+      },
+      "version": 1,
+      "createdAt": "2026-03-12T00:00:00.000Z",
+      "updatedAt": "2026-03-12T00:00:00.000Z"
+    },
+    {
+      "id": "atom_lsac_roadshow_body1",
+      "content": "Experience Sactionals in person at a Lovesac Roadshow near you. Try StealthTech, feel the fabrics, and build your perfect configuration with our product experts.",
+      "sourceUrl": "https://www.lovesac.com/visit-the-lovesac-roadshow",
+      "blockPosition": 0,
+      "contentType": "body",
+      "metadata": {
+        "topics": ["roadshow", "experience", "in-person", "stealthtech"],
+        "audienceDepth": "novice",
+        "purpose": "enable-action",
+        "emotionalRegister": "inspiring",
+        "wordCount": 25,
+        "language": "en"
+      },
+      "version": 1,
+      "createdAt": "2026-03-12T00:00:00.000Z",
+      "updatedAt": "2026-03-12T00:00:00.000Z"
+    },
+    {
+      "id": "atom_lsac_modular_compare1",
+      "content": "Unlike traditional sectionals, Sactionals never go to a landfill. Every piece is designed for a lifetime of changes — new covers, new configurations, new technology inserts.",
+      "sourceUrl": "https://www.lovesac.com/products/4-seats-5-sides-sactional",
+      "blockPosition": 1,
+      "contentType": "body",
+      "metadata": {
+        "topics": ["sustainability", "modular", "lifetime", "comparison"],
+        "audienceDepth": "intermediate",
+        "purpose": "compare",
+        "emotionalRegister": "empathetic",
+        "wordCount": 26,
+        "language": "en"
+      },
+      "version": 1,
+      "createdAt": "2026-03-12T00:00:00.000Z",
+      "updatedAt": "2026-03-12T00:00:00.000Z"
+    },
+    {
+      "id": "atom_lsac_leather_h1",
+      "content": "Premium Top-Grain Leather Sactionals",
+      "sourceUrl": "https://www.lovesac.com/products/3-seats-5-sides-sactional-russet-top-grain-leather",
+      "blockPosition": 0,
+      "contentType": "headline",
+      "metadata": {
+        "topics": ["leather", "premium", "sactionals"],
+        "audienceDepth": "intermediate",
+        "purpose": "persuade",
+        "emotionalRegister": "inspiring",
+        "wordCount": 4,
+        "language": "en"
+      },
+      "version": 1,
+      "createdAt": "2026-03-12T00:00:00.000Z",
+      "updatedAt": "2026-03-12T00:00:00.000Z"
+    },
+    {
+      "id": "atom_lsac_leather_body1",
+      "content": "Top-grain leather that gets better with age. Our Russet leather develops a rich patina over time, and every cover is still removable and replaceable — a Lovesac exclusive.",
+      "sourceUrl": "https://www.lovesac.com/products/3-seats-5-sides-sactional-russet-top-grain-leather",
+      "blockPosition": 0,
+      "contentType": "body",
+      "metadata": {
+        "topics": ["leather", "patina", "removable covers", "premium"],
+        "audienceDepth": "intermediate",
+        "purpose": "persuade",
+        "emotionalRegister": "inspiring",
+        "wordCount": 29,
+        "language": "en"
+      },
+      "version": 1,
+      "createdAt": "2026-03-12T00:00:00.000Z",
+      "updatedAt": "2026-03-12T00:00:00.000Z"
+    },
+    {
+      "id": "atom_lsac_learn_stealthtech_body1",
+      "content": "StealthTech is powered by Harman Kardon — the same audio brand trusted by BMW, Land Rover, and professional recording studios worldwide.",
+      "sourceUrl": "https://www.lovesac.com/learn-about-sactionals-stealthtech-sound-charge",
+      "blockPosition": 0,
+      "contentType": "body",
+      "metadata": {
+        "topics": ["harman kardon", "stealthtech", "audio quality", "brand"],
+        "audienceDepth": "intermediate",
+        "purpose": "persuade",
+        "emotionalRegister": "authoritative",
+        "wordCount": 21,
+        "language": "en"
+      },
+      "version": 1,
+      "createdAt": "2026-03-12T00:00:00.000Z",
+      "updatedAt": "2026-03-12T00:00:00.000Z"
+    },
+    {
+      "id": "atom_lsac_mailer_h1",
+      "content": "Limited Time: Save on Sactionals",
+      "sourceUrl": "https://www.lovesac.com/mailer15",
+      "blockPosition": 0,
+      "contentType": "headline",
+      "metadata": {
+        "topics": ["sale", "savings", "limited time", "promotion"],
+        "audienceDepth": "novice",
+        "purpose": "enable-action",
+        "emotionalRegister": "urgent",
+        "wordCount": 5,
+        "language": "en"
+      },
+      "version": 1,
+      "createdAt": "2026-03-12T00:00:00.000Z",
+      "updatedAt": "2026-03-12T00:00:00.000Z"
+    },
+    {
+      "id": "atom_lsac_mailer_body1",
+      "content": "Get 15% off your Sactionals purchase with exclusive mailer savings. Combine with 0% APR financing for up to 48 months.",
+      "sourceUrl": "https://www.lovesac.com/mailer15",
+      "blockPosition": 0,
+      "contentType": "body",
+      "metadata": {
+        "topics": ["discount", "financing", "savings", "promotion"],
+        "audienceDepth": "novice",
+        "purpose": "enable-action",
+        "emotionalRegister": "urgent",
+        "wordCount": 19,
+        "language": "en"
+      },
+      "version": 1,
+      "createdAt": "2026-03-12T00:00:00.000Z",
+      "updatedAt": "2026-03-12T00:00:00.000Z"
+    },
+    {
+      "id": "atom_lsac_mailer_cta1",
+      "content": "Shop the Sale",
+      "sourceUrl": "https://www.lovesac.com/mailer15",
+      "blockPosition": 0,
+      "contentType": "cta",
+      "metadata": {
+        "topics": ["sale", "purchase"],
+        "audienceDepth": "novice",
+        "purpose": "enable-action",
+        "emotionalRegister": "urgent",
+        "wordCount": 3,
+        "language": "en"
+      },
+      "version": 1,
+      "createdAt": "2026-03-12T00:00:00.000Z",
+      "updatedAt": "2026-03-12T00:00:00.000Z"
+    },
+    {
+      "id": "atom_lsac_6seat_h1",
+      "content": "6 Seats + 8 Sides: The Ultimate Sectional",
+      "sourceUrl": "https://www.lovesac.com/products/6-seats-8-sides-1-deep-sactional",
+      "blockPosition": 0,
+      "contentType": "headline",
+      "metadata": {
+        "topics": ["large sectional", "configuration", "sactionals"],
+        "audienceDepth": "novice",
+        "purpose": "persuade",
+        "emotionalRegister": "inspiring",
+        "wordCount": 7,
+        "language": "en"
+      },
+      "version": 1,
+      "createdAt": "2026-03-12T00:00:00.000Z",
+      "updatedAt": "2026-03-12T00:00:00.000Z"
+    },
+    {
+      "id": "atom_lsac_6seat_body1",
+      "content": "Our largest standard configuration seats up to 8 people. Perfect for family movie nights, game days, or hosting friends. Deep seats for extra comfort.",
+      "sourceUrl": "https://www.lovesac.com/products/6-seats-8-sides-1-deep-sactional",
+      "blockPosition": 0,
+      "contentType": "body",
+      "metadata": {
+        "topics": ["large sectional", "seating", "family", "entertaining"],
+        "audienceDepth": "novice",
+        "purpose": "persuade",
+        "emotionalRegister": "inspiring",
+        "wordCount": 24,
+        "language": "en"
+      },
+      "version": 1,
+      "createdAt": "2026-03-12T00:00:00.000Z",
+      "updatedAt": "2026-03-12T00:00:00.000Z"
+    }
+  ],
+  "templates": [
+    {
+      "id": "tmpl_lovesac_hero",
+      "siteId": "www.lovesac.com",
+      "sourceUrl": "https://www.lovesac.com/",
+      "blockType": "section",
+      "selector": "[data-testid='hero-banner'], .hero-banner, .homepage-hero, section:first-of-type",
+      "htmlShell": "<div style=\"padding: 48px 40px; background: linear-gradient(135deg, #2d2926 0%, #1a1715 100%); color: #fff; font-family: 'Proxima Nova', 'Helvetica Neue', Arial, sans-serif; border-radius: 0; position: relative;\"><div style=\"max-width: 600px;\"><div data-slot=\"headline\" style=\"font-size: 36px; font-weight: 700; line-height: 1.15; margin-bottom: 16px; letter-spacing: -0.02em;\"></div><div data-slot=\"body\" style=\"font-size: 16px; line-height: 1.6; color: rgba(255,255,255,0.85); margin-bottom: 24px;\"></div><a data-slot=\"cta_primary\" href=\"#\" style=\"display: inline-block; padding: 14px 32px; background: #c17c3e; color: #fff; text-decoration: none; font-weight: 600; font-size: 14px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.05em;\"></a></div></div>",
+      "cssRules": "",
+      "slots": [
+        {
+          "name": "headline",
+          "type": "text",
+          "constraints": { "maxLength": 80, "required": true },
+          "originalContent": "Designed for Life. And Then Some.",
+          "cssSelector": "[data-slot='headline']"
+        },
+        {
+          "name": "body",
+          "type": "rich-text",
+          "constraints": { "maxLength": 300, "required": true },
+          "originalContent": "Sactionals are the world's most adaptable couch — modular, washable, and built to last a lifetime.",
+          "cssSelector": "[data-slot='body']"
+        },
+        {
+          "name": "cta_primary",
+          "type": "link",
+          "constraints": { "maxLength": 30, "required": true },
+          "originalContent": "Shop Sactionals",
+          "cssSelector": "[data-slot='cta_primary']"
+        }
+      ],
+      "responsive": { "mobile": "", "tablet": "", "desktop": "" },
+      "position": "hero"
+    },
+    {
+      "id": "tmpl_lovesac_feature",
+      "siteId": "www.lovesac.com",
+      "sourceUrl": "https://www.lovesac.com/",
+      "blockType": "section",
+      "selector": ".featured-products, .product-grid, [data-testid='featured-section'], section:nth-of-type(2)",
+      "htmlShell": "<div style=\"padding: 40px; background: #f7f3ef; color: #2d2926; font-family: 'Proxima Nova', 'Helvetica Neue', Arial, sans-serif;\"><div style=\"max-width: 800px; margin: 0 auto; text-align: center;\"><div data-slot=\"heading\" style=\"font-size: 28px; font-weight: 700; margin-bottom: 12px; color: #2d2926;\"></div><div data-slot=\"body\" style=\"font-size: 15px; line-height: 1.6; color: #5a524a; margin-bottom: 20px; max-width: 600px; margin-left: auto; margin-right: auto;\"></div><a data-slot=\"cta\" href=\"#\" style=\"display: inline-block; padding: 12px 28px; background: #2d2926; color: #fff; text-decoration: none; font-weight: 600; font-size: 13px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.05em;\"></a></div></div>",
+      "cssRules": "",
+      "slots": [
+        {
+          "name": "heading",
+          "type": "text",
+          "constraints": { "maxLength": 60, "required": true },
+          "originalContent": "Why Sactionals?",
+          "cssSelector": "[data-slot='heading']"
+        },
+        {
+          "name": "body",
+          "type": "rich-text",
+          "constraints": { "maxLength": 250, "required": true },
+          "originalContent": "Modular. Washable. Changeable. Designed to last a lifetime.",
+          "cssSelector": "[data-slot='body']"
+        },
+        {
+          "name": "cta",
+          "type": "link",
+          "constraints": { "maxLength": 25, "required": true },
+          "originalContent": "Learn More",
+          "cssSelector": "[data-slot='cta']"
+        }
+      ],
+      "responsive": { "mobile": "", "tablet": "", "desktop": "" },
+      "position": "above-fold"
+    },
+    {
+      "id": "tmpl_lovesac_stealthtech_banner",
+      "siteId": "www.lovesac.com",
+      "sourceUrl": "https://www.lovesac.com/",
+      "blockType": "banner",
+      "selector": ".stealthtech-section, [data-testid='stealthtech'], section:nth-of-type(3)",
+      "htmlShell": "<div style=\"padding: 36px 40px; background: #1a1715; color: #fff; font-family: 'Proxima Nova', 'Helvetica Neue', Arial, sans-serif; border-top: 3px solid #c17c3e;\"><div style=\"max-width: 700px;\"><div data-slot=\"headline\" style=\"font-size: 24px; font-weight: 700; margin-bottom: 10px; color: #c17c3e;\"></div><div data-slot=\"body\" style=\"font-size: 14px; line-height: 1.6; color: rgba(255,255,255,0.8); margin-bottom: 16px;\"></div><a data-slot=\"cta\" href=\"#\" style=\"display: inline-block; padding: 10px 24px; border: 2px solid #c17c3e; color: #c17c3e; text-decoration: none; font-weight: 600; font-size: 13px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.05em;\"></a></div></div>",
+      "cssRules": "",
+      "slots": [
+        {
+          "name": "headline",
+          "type": "text",
+          "constraints": { "maxLength": 60, "required": true },
+          "originalContent": "StealthTech: Sound + Charge, Built In",
+          "cssSelector": "[data-slot='headline']"
+        },
+        {
+          "name": "body",
+          "type": "rich-text",
+          "constraints": { "maxLength": 250, "required": true },
+          "originalContent": "Invisible Harman Kardon speakers and wireless charging, hidden inside your Sactional.",
+          "cssSelector": "[data-slot='body']"
+        },
+        {
+          "name": "cta",
+          "type": "link",
+          "constraints": { "maxLength": 25, "required": true },
+          "originalContent": "Explore StealthTech",
+          "cssSelector": "[data-slot='cta']"
+        }
+      ],
+      "responsive": { "mobile": "", "tablet": "", "desktop": "" },
+      "position": "mid-page",
+      "insertAfter": true,
+      "requiredTopics": ["stealthtech", "sound", "speakers", "charging", "home theater", "harman kardon", "audio"]
+    }
+  ],
+  "brandProfile": {
+    "siteId": "www.lovesac.com",
+    "voice": {
+      "tone": ["warm", "innovative", "casual"],
+      "formality": "casual",
+      "personPerspective": "second",
+      "characteristicPhrases": ["Designed for Life", "The World's Most Adaptable Couch"]
+    },
+    "visual": {
+      "primaryColors": ["#c17c3e", "#2d2926", "#f7f3ef"],
+      "fontFamilies": ["Proxima Nova", "Helvetica Neue", "Arial"],
+      "spacingScale": [8, 16, 24, 40, 48]
+    },
+    "guardrails": {
+      "forbiddenTerms": ["cheap", "knockoff", "fake"],
+      "requiredDisclaimers": [],
+      "approvalRequired": false,
+      "maxGeneratedBlocksPerPage": 3
+    },
+    "siteType": "ecommerce",
+    "skillConfig": "ecommerce"
+  },
+  "crawledAt": "2026-03-12T00:00:00.000Z",
+  "pageCount": 16
+}

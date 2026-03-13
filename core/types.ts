@@ -442,8 +442,8 @@ export interface BlockReplacement {
   slotSelectors?: Record<string, string>;
   /** If true, insert new content after the selector instead of modifying it. */
   insertAfter?: boolean;
-  /** Source that triggered generation: implicit signals or chatgpt conversation. */
-  source?: 'signals' | 'chatgpt';
+  /** Source that triggered generation: implicit signals, chatgpt conversation, or LLMO prompts. */
+  source?: 'signals' | 'chatgpt' | 'llmo';
 }
 
 export interface PipelineResult {

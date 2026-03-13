@@ -49,11 +49,23 @@ export class SignalCollector {
 
   /** Emit a page visit signal for the current page. */
   private emitPageVisit(): void {
+    const referrer = document.referrer;
     this.emit('page_visit', {
       url: location.href,
-      referrer: document.referrer,
+      referrer,
       title: document.title,
     });
+
+    // Auto-detect ChatGPT referrer for LLMO lookup
+    if (referrer && referrer.includes('chatgpt.com')) {
+      this.emit('page_visit', {
+        url: location.href,
+        referrer,
+        title: document.title,
+        source: 'llmo',
+        chatgptReferrer: true,
+      });
+    }
   }
 
   // -------------------------------------------------------------------------

@@ -7,6 +7,8 @@ import { renderIntentMeter } from './components/intent-meter.js';
 import { appendSignalEntry } from './components/signal-log.js';
 import { renderBlockList, type BlockEntry } from './components/block-map.js';
 import { renderTimingBreakdown } from './components/timing-breakdown.js';
+import type { LLMOPrompt } from '../../llmo/prompt-index.js';
+import { buildPromptIndex, lookupPromptsByUrl, llmoIntentToArchetype } from '../../llmo/prompt-index.js';
 
 // ---------------------------------------------------------------------------
 // State
@@ -16,6 +18,10 @@ let currentIntent: IntentVector | null = null;
 let signalCount = 0;
 let chatgptReady = false;
 let chatgptSignalCount = 0;
+let llmoReady = false;
+let llmoSignalCount = 0;
+let llmoPrompts: LLMOPrompt[] = [];
+let llmoIndex: ReturnType<typeof buildPromptIndex> | null = null;
 const generatedBlocks: BlockEntry[] = [];
 
 // ---------------------------------------------------------------------------
@@ -38,6 +44,9 @@ const generateChatgptBtn = document.getElementById('generate-chatgpt-btn') as HT
 const signalCountLabel = document.getElementById('signal-count-label')!;
 const chatgptCountLabel = document.getElementById('chatgpt-count-label')!;
 const generateStatus = document.getElementById('generate-status')!;
+const generateLlmoBtn = document.getElementById('generate-llmo-btn') as HTMLButtonElement;
+const llmoCountLabel = document.getElementById('llmo-count-label')!;
+const llmoPromptSelect = document.getElementById('llmo-prompt-select') as HTMLSelectElement;
 const clearBtn = document.getElementById('clear-btn')!;
 
 // ---------------------------------------------------------------------------
@@ -226,6 +235,132 @@ chatgptFile.addEventListener('change', async () => {
 });
 
 // ---------------------------------------------------------------------------
+// LLMO import
+// ---------------------------------------------------------------------------
+
+const llmoImportBtn = document.getElementById('llmo-import-btn')!;
+const llmoFile = document.getElementById('llmo-file') as HTMLInputElement;
+const llmoStatus = document.getElementById('llmo-status')!;
+
+llmoImportBtn.addEventListener('click', () => {
+  llmoFile.click();
+});
+
+llmoFile.addEventListener('change', async () => {
+  const file = llmoFile.files?.[0];
+  if (!file) return;
+
+  llmoStatus.textContent = 'Reading...';
+  llmoImportBtn.setAttribute('disabled', 'true');
+
+  try {
+    const text = await file.text();
+    const data: LLMOPrompt[] = JSON.parse(text);
+
+    if (!Array.isArray(data) || data.length === 0) {
+      llmoStatus.textContent = 'Invalid prompts file (expected JSON array)';
+      llmoImportBtn.removeAttribute('disabled');
+      return;
+    }
+
+    llmoPrompts = data;
+    llmoIndex = buildPromptIndex(data);
+
+    // Populate dropdown filtered by current page URL
+    const tabs = await chrome.tabs.query({ active: true, currentWindow: true });
+    const pageUrl = tabs[0]?.url ?? '';
+    populateLlmoDropdown(pageUrl);
+
+    llmoStatus.textContent = `${data.length} prompts loaded`;
+    llmoImportBtn.removeAttribute('disabled');
+  } catch (err) {
+    llmoStatus.textContent = `Parse error: ${err}`;
+    llmoImportBtn.removeAttribute('disabled');
+  }
+
+  llmoFile.value = '';
+});
+
+function populateLlmoDropdown(pageUrl: string): void {
+  if (!llmoIndex) return;
+
+  // Get prompts for this URL, or show all if no match
+  let matchedPrompts = lookupPromptsByUrl(llmoIndex, pageUrl);
+  if (matchedPrompts.length === 0) {
+    matchedPrompts = llmoIndex.all;
+  }
+
+  // Clear existing options
+  llmoPromptSelect.innerHTML = '<option value="">Select an LLMO prompt...</option>';
+
+  for (let i = 0; i < matchedPrompts.length; i++) {
+    const p = matchedPrompts[i];
+    const opt = document.createElement('option');
+    opt.value = String(i);
+    opt.textContent = `[${p.intent}] ${p.prompt.slice(0, 80)}`;
+    opt.dataset.prompt = JSON.stringify(p);
+    llmoPromptSelect.appendChild(opt);
+  }
+
+  llmoPromptSelect.style.display = 'block';
+}
+
+llmoPromptSelect.addEventListener('change', async () => {
+  const selectedOption = llmoPromptSelect.selectedOptions[0];
+  if (!selectedOption?.dataset.prompt) return;
+
+  const prompt: LLMOPrompt = JSON.parse(selectedOption.dataset.prompt);
+
+  // Construct synthetic signals from the LLMO prompt
+  const tabs = await chrome.tabs.query({ active: true, currentWindow: true });
+  const pageUrl = tabs[0]?.url ?? prompt.url;
+  const tabId = tabs[0]?.id ?? 0;
+  const now = new Date().toISOString();
+
+  const signals = [
+    {
+      type: 'page_visit' as const,
+      timestamp: now,
+      data: {
+        url: pageUrl,
+        referrer: 'https://chatgpt.com',
+        title: document.title,
+        source: 'llmo',
+      },
+      pageUrl,
+    },
+    {
+      type: 'search_query' as const,
+      timestamp: now,
+      data: {
+        query: prompt.prompt,
+        source: 'llmo',
+        llmoIntent: prompt.intent,
+        llmoTopic: prompt.topic,
+        llmoCategory: prompt.category,
+      },
+      pageUrl,
+    },
+  ];
+
+  llmoStatus.textContent = `Sending signals for: "${prompt.prompt.slice(0, 40)}..."`;
+
+  chrome.runtime.sendMessage(
+    { type: 'SIGNAL_BATCH', signals, pageUrl, tabId },
+    (response) => {
+      if (chrome.runtime.lastError) {
+        llmoStatus.textContent = `Error: ${chrome.runtime.lastError.message}`;
+      } else {
+        llmoSignalCount = signals.length;
+        llmoReady = true;
+        llmoStatus.textContent = `Prompt ingested — click "From LLMO" to generate`;
+        updateGenerateButtons();
+      }
+    },
+  );
+});
+
+// ---------------------------------------------------------------------------
 // Index import
 // ---------------------------------------------------------------------------
 
@@ -300,6 +435,12 @@ function updateGenerateButtons(): void {
   chatgptCountLabel.textContent = chatgptReady
     ? `${chatgptSignalCount} signals ingested`
     : 'Import a conversation first';
+
+  // LLMO button: enabled after prompt selection
+  generateLlmoBtn.disabled = !llmoReady;
+  llmoCountLabel.textContent = llmoReady
+    ? `${llmoSignalCount} signals from LLMO prompt`
+    : 'Import prompts first';
 }
 
 function triggerGenerate(source: GenerationSource): void {
@@ -328,6 +469,7 @@ function triggerGenerate(source: GenerationSource): void {
 
 generateSignalsBtn.addEventListener('click', () => triggerGenerate('signals'));
 generateChatgptBtn.addEventListener('click', () => triggerGenerate('chatgpt'));
+generateLlmoBtn.addEventListener('click', () => triggerGenerate('llmo'));
 
 // ---------------------------------------------------------------------------
 // Clear all
@@ -344,6 +486,8 @@ clearBtn.addEventListener('click', () => {
       signalCount = 0;
       chatgptReady = false;
       chatgptSignalCount = 0;
+      llmoReady = false;
+      llmoSignalCount = 0;
       generatedBlocks.length = 0;
 
       // Reset UI
@@ -353,6 +497,8 @@ clearBtn.addEventListener('click', () => {
       timingContent.innerHTML = '<div class="empty-state">No timing data</div>';
       generateStatus.textContent = '';
       chatgptStatus.textContent = '';
+      llmoStatus.textContent = '';
+      llmoPromptSelect.style.display = 'none';
       updateGenerateButtons();
       updateStatus('inactive');
     });
